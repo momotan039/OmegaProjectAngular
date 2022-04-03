@@ -1,0 +1,22 @@
+<div class="container student-container">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>מספר ת"ז</th>
+        <th>שם סטודנט</th>
+        <th>שם קבוצה</th>
+        <th>ציון</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{s}}</td>
+        <td>{{u.UserId}}</td>
+        <td>{{u.FirstName+" "+u.LastName}}</td>
+        <td>בסיכומיטרי 1</td>
+        <td>650</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

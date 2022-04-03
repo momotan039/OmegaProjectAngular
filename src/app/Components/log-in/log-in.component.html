@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit(LogInForm)" #LogInForm="ngForm" class="container">
+  <div class="Login">
+    <h1 class="title"><i class="fas fa-user"></i> כניסה לחשבון</h1>
+    <div class="row1 row">
+      <input required ngModel name="userName" placeholder="שם משתמש" >
+      <i class="fas fa-signature"></i>
+    </div>
+    <div class="row2 row">
+      <input required ngModel name="passWord" placeholder="סיסמה"  type="password">
+      <i class="fas fa-lock"></i>
+    </div>
+    <button type="submit">כניסה</button>
+  </div>
+</form>
+

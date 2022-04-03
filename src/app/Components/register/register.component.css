@@ -1,0 +1,90 @@
+.container{
+  padding: 20px 0;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Login{
+  text-align:-webkit-center;
+  position: relative;
+  background-color: black;
+  padding: 6rem 3rem;
+  border-radius: 23px;
+}
+.Login .title{
+color: white;
+position: relative;
+}
+
+.Login .row{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: fit-content;
+  position: relative;
+}
+.Login .row i{
+  color: white;
+  position: absolute;
+  right: 0.2rem;
+  top: 2rem;
+  font-size: 1.6rem;
+}
+.Login .row input{
+  border-radius: 23px;
+  padding: 1rem 2.3rem;
+  font-size: 2.5rem;
+  background-color: var(--main-color);
+  position: relative;
+}
+
+.Login .row input::placeholder{
+  color: white;
+}
+
+.Login button{
+  font-size: 2rem;
+  background-color:  var(--main-color);;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.Login button:hover{
+  font-size: 3rem;
+}
+
+
+
+/* Responsive configure */
+@media(max-width:768px){
+  .Login{
+    padding: 0;
+  }
+  .Login input{
+    font-size: 1.8rem !important;
+  }
+  .Login .row i{
+    right: 0.4rem;
+    top: 1.8rem;
+  }
+}
+@media(max-width:480px){
+  .Login{
+    padding: 0;
+  }
+  .Login input{
+    padding: 0 !important;
+    font-size: 1.8rem !important;
+  }
+  .Login .row i{
+    left: 13px;
+    right: unset;
+    top: 4px;
+  }
+}
