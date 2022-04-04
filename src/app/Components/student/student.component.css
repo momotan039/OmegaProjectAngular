@@ -21,7 +21,13 @@ table,tr,th,td{
   text-align: center;
   padding: 4px;
 }
-
+table td .fa-edit{
+  cursor: pointer;
+}
+table td .fa-edit:hover{
+color: white;
+transform: rotate(720deg);
+}
 
 @media(max-width:768px){
   table tr{
