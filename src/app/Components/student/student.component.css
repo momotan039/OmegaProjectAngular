@@ -1,0 +1,40 @@
+.student-container{
+margin-top: 15px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr{
+  font-size: 1.7rem;
+    color: black;
+    background-color: var(--main-backColor);
+    font-weight: bold;
+}
+table th{
+  font-size: 2rem;
+  color: white;
+}
+table,tr,th,td{
+  border: 1px solid white;
+  text-align: center;
+  padding: 4px;
+}
+table td .fa-edit{
+  cursor: pointer;
+}
+table td .fa-edit:hover{
+color: white;
+transform: rotate(720deg);
+}
+
+@media(max-width:768px){
+  table tr{
+    font-size: 1rem;
+  }
+  table th{
+    font-size: 1.2rem;
+  }
+}
+

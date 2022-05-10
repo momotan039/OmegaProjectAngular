@@ -1,0 +1,20 @@
+<div class="container header">
+  <h1>{{user}}</h1>
+  <a href="/">
+    <div class="logo"></div>
+  </a>
+  <ul *ngIf="ExistedUser()" class="menu">
+    <li *ngFor="let item of mainMenu">
+      <a routerLink="{{item.href}}">
+        <i class="{{item.fontAwesomeClass}}">
+        </i>{{item.Title}}</a>
+      </li>
+  </ul>
+  <ul *ngIf="ExistedUser()" class="mobile-menu">
+    <li  *ngFor="let item of mainMenu"><a routerLink="{{item.href}}"><i
+          class="{{item.fontAwesomeClass}}"></i>{{item.Title}}</a></li>
+  </ul>
+  <button class="btn-mobile-menu">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
