@@ -12,6 +12,7 @@ import { StudentComponent } from './Components/student/student.component';
 import { TeacherComponent } from './Components/teacher/teacher.component';
 import { GroupComponent } from './Components/group/group.component';
 import { MessageComponent } from './Components/message/message.component';
+import { HeaderWithoutMenuComponent } from './Components/header-without-menu/header-without-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MessageComponent } from './Components/message/message.component';
     TeacherComponent,
     GroupComponent,
     MessageComponent,
+    HeaderWithoutMenuComponent,
   ],
   imports: [
     BrowserModule,

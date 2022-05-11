@@ -1,0 +1,15 @@
+.header{
+  text-align: -webkit-center;
+  background-color: black;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.header .logo{
+  background-image: url(../../images/Logo.png);
+  width: 250px;
+  height: 53px;
+  background-repeat: no-repeat;
+}
