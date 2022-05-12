@@ -12,7 +12,6 @@ export class HeaderWithoutMenuComponent implements OnInit {
 
   mainMenu:Array<MainMenu>=MainMenu.mainMenu
   constructor(private userSerivce:UserService) {
-    alert(this.ExistedUser())
   }
   user?:User;
   ngOnInit(): void {

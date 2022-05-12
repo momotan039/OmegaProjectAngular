@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  firstName?:string
+  _firstName?:string
   constructor(private userService:UserService) {
-    this.firstName=this.userService.currentUser?.FirstName;
+    this._firstName=this.userService.currentUser?.firstName;
    }
    GetRule(){
-     let rule=this.userService.currentUser?.Rule
+     let rule=this.userService.currentUser?.rol
      if(rule==1)
      return "admin";
      else if(rule==2)

@@ -29,6 +29,10 @@ color: white;
 transform: rotate(720deg);
 }
 
+.student-container .left{
+width: 100%;
+}
+
 @media(max-width:768px){
   table tr{
     font-size: 1rem;

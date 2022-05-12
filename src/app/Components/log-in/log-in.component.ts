@@ -44,7 +44,7 @@ export class LogInComponent implements OnInit {
       return
     }
     //get from database student bu current user id
-    const userId=this.userService.currentUser?.UserId
+    const userId=this.userService.currentUser?.idCard
     this.studentService.currentStudent=this.studentService.Students.find(s=>s.UserId==userId)
     this.router.navigate(['/Home'])
   }

@@ -7,13 +7,13 @@ import { LogInComponent } from './Components/log-in/log-in.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HomeComponent } from './Components/home/home.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentComponent } from './Components/student/student.component';
 import { TeacherComponent } from './Components/teacher/teacher.component';
 import { GroupComponent } from './Components/group/group.component';
 import { MessageComponent } from './Components/message/message.component';
 import { HeaderWithoutMenuComponent } from './Components/header-without-menu/header-without-menu.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +29,9 @@ import { HeaderWithoutMenuComponent } from './Components/header-without-menu/hea
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

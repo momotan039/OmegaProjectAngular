@@ -1,22 +1,58 @@
-<div class="container student-container">
-  <table>
+<div class="d-flex container student-container">
+
+  <div class="right">
+
+   <div class="d-flex">
+    <input type="text">
+    <h4>מספר ת"ז</h4>
+   </div>
+
+   <div class="d-flex">
+    <input type="text">
+    <h4>מספר ת"ז</h4>
+   </div>
+
+   <div class="d-flex">
+    <input type="text">
+    <h4>שם משפחה</h4>
+   </div>
+
+   <div class="d-flex">
+    <input type="text">
+    <h4>מייל</h4>
+   </div>
+
+   <div class="d-flex">
+    <input type="text">
+    <h4>סיסמה</h4>
+   </div>
+
+  </div>
+ <div class="left">
+  <table >
     <thead>
       <tr>
-        <th></th>
+        <th>#</th>
         <th>מספר ת"ז</th>
-        <th>שם סטודנט</th>
-        <th>שם קבוצה</th>
-        <th>ציון</th>
+        <th>שם פרטי</th>
+        <th>שם משפחה</th>
+        <th>מייל</th>
+        <th>סיסמה</th>
+        <th>פעולה</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of users; let i=index">
+      <tr *ngFor="let u of users; let i=index;">
         <td>{{i+1}}</td>
-        <td>{{u.UserId}}</td>
-        <td>{{u.FirstName+" "+u.LastName}}</td>
-        <td>בסיכומיטרי 1</td>
-        <td>650</td>
+        <td>{{u.idCard}}</td>
+        <td>{{u.firstName}}</td>
+        <td>{{u.lastName}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.password}}</td>
+        <td>עריכה</td>
    </tr>
     </tbody>
   </table>
+ </div>
+
 </div>

@@ -1,8 +1,9 @@
 export class User{
-  UserId?:string;
-  Rule?:number;
-  FirstName?:string;
-  LastName?:string;
-  UserName?:string;
-  Password?:string;
+  idCard?:number;
+  firstName?:string;
+  lastName?:string;
+  phone?:string;
+  rol?:number;
+  email?:string;
+  password?:string;
 }
