@@ -1,0 +1,37 @@
+<div class="addFormUser">
+  <h1>{{this.method}}</h1>
+  <form (submit)="this.operation()" NgForm="form" >
+   <div class="line form-group">
+    <label>מספר ת"ז</label>
+    <input [(ngModel)]="this.user.idCard" name="idCard"   class="form-control" type="text">
+   </div>
+
+   <div class="line form-group">
+    <label>שם פרטי</label>
+    <input [(ngModel)]="this.user.firstName" name="firstName"  class="form-control infname" type="text">
+   </div>
+
+   <div class="line form-group">
+    <label>שם משפחה</label>
+    <input  [(ngModel)]="this.user.lastName" name="lastName"  class="form-control inlname" type="text">
+   </div>
+
+   <div class="line form-group">
+    <label>מספר טלפון</label>
+    <input  [(ngModel)]="this.user.phone" name="phone"  class="form-control inlname" type="text">
+   </div>
+
+   <div class="line form-group">
+    <label>מייל</label>
+    <input [(ngModel)]="this.user.email" name="mail" type="email" class="form-control inmail">
+   </div>
+
+   <div class="line form-group">
+    <label>סיסמה</label>
+    <input [(ngModel)]="this.user.password" name="password"  class="form-control inpass" type="text">
+   </div>
+
+   <button type="submit" class="btn btn-primary add-student"><i class="fa fa-plus" aria-hidden="true"></i>
+    שמירת סטודנט</button>
+  </form>
+  </div>

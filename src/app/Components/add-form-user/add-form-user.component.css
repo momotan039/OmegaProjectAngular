@@ -1,0 +1,15 @@
+:host{
+  text-align: center;
+  height: fit-content;
+  flex: 1;
+}
+
+
+:host .line h4 {
+  text-align: center;
+  padding: 5px;
+}
+
+:host .add-student{
+  margin: 10px;
+}

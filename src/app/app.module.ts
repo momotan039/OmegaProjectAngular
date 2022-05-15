@@ -15,6 +15,7 @@ import { HeaderWithoutMenuComponent } from './Components/header-without-menu/hea
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './Components/users-list/users-list.component';
+import { AddFormUserComponent } from './Components/add-form-user/add-form-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { UsersListComponent } from './Components/users-list/users-list.component
     MessageComponent,
     HeaderWithoutMenuComponent,
     UsersListComponent,
+    AddFormUserComponent,
   ],
   imports: [
     BrowserModule,

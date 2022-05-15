@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/Services/User/Users.service';
 import { HttpService } from './../../Services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/User';
@@ -8,11 +9,11 @@ import { User } from 'src/app/Models/User';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-
-  constructor(private HttpService:HttpService) { }
+  constructor(public userService:UserService) {
+   }
   students:Array<User>=[]
   ngOnInit(): void {
-    this.HttpService.GetUsers().then(d=>{
+    this.userService.HttpService.GetUsers().then(d=>{
     this.students=d as User[];
     })
   }

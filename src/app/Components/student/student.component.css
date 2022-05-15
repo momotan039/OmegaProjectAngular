@@ -1,64 +1,58 @@
-.student-container{
-margin-top: 15px;
+.Title {
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  margin: 6px auto -6px auto;
 }
 
-.right {
+.addFormUser{
   text-align: center;
+  height: fit-content;
+  flex: 1;
+
+}
+.addUser {
   padding-left: 15px;
   border-left: 2px solid;
   border-bottom: 2px solid;
   border-radius: 10px;
-  height: fit-content;
 }
-.right .line h4{
- text-align: center;
- padding: 5px;
+
+.addFormUser .line h4 {
+  text-align: center;
+  padding: 5px;
 }
-.right .add-student{
+
+.addFormUser .add-student{
   margin: 10px;
 }
 
-table{
-  border-collapse: collapse;
-  width: 100%;
-}
-table tr{
-    /* font-size: 1.7rem; */
-    color: black;
-    background-color: var(--main-backColor);
-    font-weight: bold;
-}
-table th{
-  /* font-size: 2rem; */
-  color: white;
-}
-table,tr,th,td{
-  border: 1px solid white;
-  text-align: center;
-  padding: 4px;
-}
-table td .fa-edit{
-  cursor: pointer;
-  padding: 3px 10px;
-}
-table td .fa-edit:hover
-,table td .fa-trash:hover{
-color: white;
-transform: rotate(360deg);
+.student-container .ShowList {
+  flex: 8;
 }
 
-.student-container .left{
-width: 100%;
+.student-container .editUser {
+  padding-right: 15px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-radius: 10px;
+  /* display: none;
+  transform: translate(-100px,0px); */
 }
 
-@media(max-width:768px){
-  table tr{
+.student-container .editUser.show{
+  display: block;
+}
+.student-container .editUser.playTranslate{
+  transform: translate(-100px,0px);
+}
+
+
+@media(max-width:768px) {
+  table tr {
     font-size: 1rem;
   }
-  table th{
+
+  table th {
     font-size: 1.2rem;
   }
 }
-
-
-

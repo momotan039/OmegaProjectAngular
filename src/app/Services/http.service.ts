@@ -33,10 +33,9 @@ export class HttpService {
     });
 }
 async EditingUser(user:User){
-  return await this.http.put("https://localhost:44327/api/Users/EditingUser/",user).subscribe((res)=>{
-
+  return await this.http.put("https://localhost:44327/api/Users/EditUser",user).subscribe((res)=>{
   },error=>{
-    console.log(error)
+    console.warn(error)
   });
 }
 

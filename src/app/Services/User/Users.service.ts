@@ -1,13 +1,20 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/Models/User';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   currentUser?:User;
+  user=new User();
+  editUser=new User();
   static AllUsers:Array<User>=[
   ]
+  constructor(public HttpService:HttpService,
+    private router:Router){
+  }
 
    CheckExistUser(userName:string,passWord:string):Boolean{
      let found=false
@@ -22,4 +29,78 @@ export class UserService {
 
       return found
   }
+
+  resetUser(user:User){
+    user.role=3;
+    user.email=""
+    user.firstName=""
+    user.lastName=""
+    user.idCard=""
+    user.phone=""
+  }
+  addUser(){
+      if(!this.IsFilledProperties(this.user))
+        {
+          alert("נא להזין את כל פרטי הסטודנט")
+          return;
+        }
+
+    //check if this User not exitst in database
+    this.HttpService.GetUsers().then(us=>{
+
+
+      let temp=(us as User[]).find(u=>u.idCard==this.user.idCard)
+      if(temp!=undefined)
+      {
+        alert("כבר קיים במערכת משתמש עם מספר תעודת הזהות הזו")
+        return;
+      }
+      //Add Studnet to DataBase
+      this.HttpService.PostUser(this.user).then(e=>{
+        alert("הפעולה פוצעה בהצלחה")
+       let currentUrl = this.router.url;
+       window.location.replace(currentUrl);
+       })
+    })
+
+      }
+
+
+
+  deleteUser(id:string){
+    let res=window.confirm("האם ברצונך להמשיך ?")
+    if(!res)
+      return;
+    this.HttpService.DeleteUser(id).then(f=>{
+      alert("הפעולה פוצעה בהצלחה")
+    let currentUrl = this.router.url;
+    window.location.replace(currentUrl);
+    })
+  }
+  GetIDUser(user:User){
+this.editUser=user;
+  }
+  EditUser(){
+    if(!this.IsFilledProperties(this.editUser)){
+      alert("נא לבחור אחד מהמשתמשים כדי להמשיך")
+      return;
+    }
+    let res=window.confirm("האם ברצונך להמשיך ?")
+    if(!res)
+      return;
+    this.HttpService.EditingUser(this.editUser).then(f=>{
+      alert("הפעולה פוצעה בהצלחה")
+    let currentUrl = this.router.url;
+    window.location.replace(currentUrl);
+    })
+  }
+
+   IsFilledProperties(user:User) {
+    if(user.email=="" || user.firstName=="" || user.idCard=="",
+    user.lastName=="" || user.password==""|| user.phone==""
+    )
+    return false;
+
+    return true;
+}
 }

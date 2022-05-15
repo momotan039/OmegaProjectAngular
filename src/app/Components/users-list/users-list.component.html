@@ -1,24 +1,37 @@
-<table >
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>מספר ת"ז</th>
-      <th>שם פרטי</th>
-      <th>שם משפחה</th>
-      <th>מייל</th>
-      <th>סיסמה</th>
-      <th>פעולה</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let u of students; let i=index;">
-      <td>{{i+1}}</td>
-      <td>{{u.idCard}}</td>
-      <td>{{u.firstName}}</td>
-      <td>{{u.lastName}}</td>
-      <td>{{u.email}}</td>
-      <td>{{u.password}}</td>
-      <td>עריכה</td>
- </tr>
-  </tbody>
-</table>
+<div class="ShowList">
+  <table >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>מספר ת"ז</th>
+        <th>שם פרטי</th>
+        <th>שם משפחה</th>
+        <th>מספר נייד</th>
+        <th>מייל</th>
+        <th>סיסמה</th>
+        <th>פעולה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of students; let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{u.idCard}}</td>
+        <td>{{u.firstName}}</td>
+        <td>{{u.lastName}}</td>
+        <td>{{u.phone}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.password}}</td>
+        <td>
+          <button (click)="this.userService.GetIDUser(u)"  class="edit btn bg-success">
+          <i class="fa fa-edit " aria-hidden="true">
+          </i>
+          </button>
+          <button (click)="this.userService.deleteUser(u.idCard!)" class="edit btn bg-danger">
+            <i class="fa fa-trash " aria-hidden="true">
+            </i>
+            </button>
+      </td>
+   </tr>
+    </tbody>
+  </table>
+ </div>
