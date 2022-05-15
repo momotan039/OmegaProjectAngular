@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../Models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -13,4 +14,30 @@ export class HttpService {
   async GetUsers(){
     return await this.http.get("https://localhost:44327/api/Users/GetUsers").toPromise();
   }
+
+  async PostUser(user:User){
+    //return await this.http.post("https://localhost:44327/api/Users/PostUser",user).toPromise();
+
+     await this.http.post("https://localhost:44327/api/Users/PostUser",user).subscribe((data)=>{
+    },error=>{
+      console.log(error)
+    }
+    );
+  }
+
+  async DeleteUser(id:String){
+    return await this.http.delete("https://localhost:44327/api/Users/DeleteUser/"+id).subscribe((res)=>{
+
+    },error=>{
+      console.log(error)
+    });
+}
+async EditingUser(user:User){
+  return await this.http.put("https://localhost:44327/api/Users/EditingUser/",user).subscribe((res)=>{
+
+  },error=>{
+    console.log(error)
+  });
+}
+
 }

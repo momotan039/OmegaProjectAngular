@@ -12,10 +12,10 @@ export class HomeComponent implements OnInit {
     this._firstName=this.userService.currentUser?.firstName;
    }
    GetRule(){
-     let rule=this.userService.currentUser?.rol
-     if(rule==1)
+     let role=this.userService.currentUser?.role
+     if(role==1)
      return "admin";
-     else if(rule==2)
+     else if(role==2)
      return "Teacher"
 
      return "Student"

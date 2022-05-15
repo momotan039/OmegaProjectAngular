@@ -1,9 +1,10 @@
 export class User{
-  idCard?:number;
+  idCard?:string;
   firstName?:string;
   lastName?:string;
   phone?:string;
-  rol?:number;
+  role?:number;
   email?:string;
   password?:string;
+  id?:number
 }

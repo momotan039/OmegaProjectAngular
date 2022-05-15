@@ -2,18 +2,34 @@
 margin-top: 15px;
 }
 
+.right {
+  text-align: center;
+  padding-left: 15px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  border-radius: 10px;
+  height: fit-content;
+}
+.right .line h4{
+ text-align: center;
+ padding: 5px;
+}
+.right .add-student{
+  margin: 10px;
+}
+
 table{
   border-collapse: collapse;
   width: 100%;
 }
 table tr{
-  font-size: 1.7rem;
+    /* font-size: 1.7rem; */
     color: black;
     background-color: var(--main-backColor);
     font-weight: bold;
 }
 table th{
-  font-size: 2rem;
+  /* font-size: 2rem; */
   color: white;
 }
 table,tr,th,td{
@@ -23,10 +39,12 @@ table,tr,th,td{
 }
 table td .fa-edit{
   cursor: pointer;
+  padding: 3px 10px;
 }
-table td .fa-edit:hover{
+table td .fa-edit:hover
+,table td .fa-trash:hover{
 color: white;
-transform: rotate(720deg);
+transform: rotate(360deg);
 }
 
 .student-container .left{
@@ -41,4 +59,6 @@ width: 100%;
     font-size: 1.2rem;
   }
 }
+
+
 

@@ -1,32 +1,41 @@
 <div class="d-flex container student-container">
 
   <div class="right">
+  <form (submit)="addStudent()" NgForm="form" >
 
-   <div class="d-flex">
-    <input type="text">
-    <h4>מספר ת"ז</h4>
+   <div class="line form-group">
+    <label>מספר ת"ז</label>
+    <input [(ngModel)]="this.user.idCard" name="idCard"   class="form-control" type="text">
    </div>
 
-   <div class="d-flex">
-    <input type="text">
-    <h4>מספר ת"ז</h4>
+   <div class="line form-group">
+    <label>שם פרטי</label>
+    <input [(ngModel)]="this.user.firstName" name="firstName"  class="form-control infname" type="text">
    </div>
 
-   <div class="d-flex">
-    <input type="text">
-    <h4>שם משפחה</h4>
+   <div class="line form-group">
+    <label>שם משפחה</label>
+    <input  [(ngModel)]="this.user.lastName" name="lastName"  class="form-control inlname" type="text">
    </div>
 
-   <div class="d-flex">
-    <input type="text">
-    <h4>מייל</h4>
+   <div class="line form-group">
+    <label>מספר טלפון</label>
+    <input  [(ngModel)]="this.user.phone" name="phone"  class="form-control inlname" type="text">
    </div>
 
-   <div class="d-flex">
-    <input type="text">
-    <h4>סיסמה</h4>
+   <div class="line form-group">
+    <label>מייל</label>
+    <input [(ngModel)]="this.user.email" name="mail" type="email" class="form-control inmail">
    </div>
 
+   <div class="line form-group">
+    <label>סיסמה</label>
+    <input [(ngModel)]="this.user.password" name="password"  class="form-control inpass" type="text">
+   </div>
+
+   <button type="submit" class="btn btn-primary add-student"><i class="fa fa-plus" aria-hidden="true"></i>
+    הוספת סטודנט</button>
+  </form>
   </div>
  <div class="left">
   <table >
@@ -42,14 +51,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of users; let i=index;">
+      <tr *ngFor="let u of students; let i=index;">
         <td>{{i+1}}</td>
         <td>{{u.idCard}}</td>
         <td>{{u.firstName}}</td>
         <td>{{u.lastName}}</td>
         <td>{{u.email}}</td>
         <td>{{u.password}}</td>
-        <td>עריכה</td>
+        <td>
+          <button (click)="EditStudent(u)"  class="edit btn bg-success">
+          <i class="fa fa-edit " aria-hidden="true">
+          </i>
+          </button>
+          <button (click)="deleteStudent(u.idCard!)" class="edit btn bg-danger">
+            <i class="fa fa-trash " aria-hidden="true">
+            </i>
+            </button>
+      </td>
    </tr>
     </tbody>
   </table>

@@ -14,6 +14,7 @@ import { MessageComponent } from './Components/message/message.component';
 import { HeaderWithoutMenuComponent } from './Components/header-without-menu/header-without-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UsersListComponent } from './Components/users-list/users-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     GroupComponent,
     MessageComponent,
     HeaderWithoutMenuComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,
