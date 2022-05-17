@@ -1,6 +1,6 @@
-import { StudentService } from './../../Services/Student/student.service';
-import { UserService } from './../../Services/User/Users.service';
-import { User } from './../../Models/User';
+import { StudentService } from '../../../Services/Student/student.service';
+import { UserService } from '../../../Services/User/Users.service';
+import { User } from '../../../Models/User';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/Models/User';
+import { UserService } from 'src/app/Services/User/Users.service';
 
 @Component({
   selector: 'app-teacher',
@@ -6,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher.component.css']
 })
 export class TeacherComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
+
 
 }

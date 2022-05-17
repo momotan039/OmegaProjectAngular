@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../Models/User';
+import { User } from '../../Models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class HttpService {
 
   async GetUsers(){
     return await this.http.get("https://localhost:44327/api/Users/GetUsers").toPromise();
+  }
+
+  async GetUsersByRole(role:number){
+    return await this.http.get("https://localhost:44327/api/Users/GetUsersByRole/"+role).toPromise();
   }
 
   async PostUser(user:User){

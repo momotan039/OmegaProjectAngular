@@ -1,6 +1,6 @@
-import { User } from './../../Models/User';
+import { User } from '../../../Models/User';
 import { UserService } from 'src/app/Services/User/Users.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-form-user',
@@ -9,30 +9,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AddFormUserComponent implements OnInit {
   constructor(public userService:UserService) { }
-   _editUser=new User();
+  @Input() users:Array<User>=[]
+  @Input() role=0
   ngOnInit(): void {
 
     if(this.method=="add")
     this.user=this.userService.user;
-
-    else
-    this._editUser=this.userService.editUser;
-
-
   }
-  @Input() user1=new User();
-  @Input() user2=new User();
-  @Input() user=new User();
+
+   @Input() user=new User();
+
 
   @Input() method:string=""
 
   operation(){
-    console.warn(this._editUser)
-    console.warn(this.userService.editUser)
-   if(this.method=="add")
-    this.userService.addUser()
-    else
-      this.userService.EditUser()
 
+   if(this.method=="add")
+    this.userService.addUser(this.role);
+    else
+      this.userService.EditUser(this.user,this.role)
   }
+
 }

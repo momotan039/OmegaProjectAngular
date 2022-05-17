@@ -1,4 +1,4 @@
-<div class="ShowList">
+<div class="ShowList ps-2 pe-2">
   <table >
     <thead>
       <tr>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of students; let i=index;">
+      <tr *ngFor="let u of this.userService.users; let i=index;">
         <td>{{i+1}}</td>
         <td>{{u.idCard}}</td>
         <td>{{u.firstName}}</td>
@@ -22,11 +22,11 @@
         <td>{{u.email}}</td>
         <td>{{u.password}}</td>
         <td>
-          <button (click)="this.userService.GetIDUser(u)"  class="edit btn bg-success">
+          <button (click)="this.OnEditUser(u)"  class="edit btn bg-success">
           <i class="fa fa-edit " aria-hidden="true">
           </i>
           </button>
-          <button (click)="this.userService.deleteUser(u.idCard!)" class="edit btn bg-danger">
+          <button (click)="this.OnDeleteUser(u)" class="edit btn bg-danger">
             <i class="fa fa-trash " aria-hidden="true">
             </i>
             </button>

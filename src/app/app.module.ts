@@ -3,19 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LogInComponent } from './Components/log-in/log-in.component';
-import { RegisterComponent } from './Components/register/register.component';
-import { HeaderComponent } from './Components/header/header.component';
+import { LogInComponent } from './Components/Pages/log-in/log-in.component';
+import { RegisterComponent } from './Components/Pages/register/register.component';
+import { HeaderComponent } from './Components/Layout/header/header.component';
 import { HomeComponent } from './Components/home/home.component';
-import { StudentComponent } from './Components/student/student.component';
-import { TeacherComponent } from './Components/teacher/teacher.component';
-import { GroupComponent } from './Components/group/group.component';
-import { MessageComponent } from './Components/message/message.component';
+import { StudentComponent } from './Components/Pages/student/student.component';
+import { TeacherComponent } from './Components/Pages/teacher/teacher.component';
+import { GroupComponent } from './Components/Pages/group/group.component';
+import { MessageComponent } from './Components/Pages/message/message.component';
 import { HeaderWithoutMenuComponent } from './Components/header-without-menu/header-without-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UsersListComponent } from './Components/users-list/users-list.component';
-import { AddFormUserComponent } from './Components/add-form-user/add-form-user.component';
+import { UsersListComponent } from './Components/Sub Components/users-list/users-list.component';
+import { AddFormUserComponent } from './Components/Sub Components/add-form-user/add-form-user.component';
+import { UserControlComponent } from './Components/Sub Components/user-control/user-control.component';
+import { AdminComponent } from './Components/Pages/admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { AddFormUserComponent } from './Components/add-form-user/add-form-user.c
     HeaderWithoutMenuComponent,
     UsersListComponent,
     AddFormUserComponent,
+    UserControlComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

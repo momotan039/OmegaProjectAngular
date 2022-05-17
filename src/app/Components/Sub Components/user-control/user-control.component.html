@@ -1,0 +1,10 @@
+<div class="container Title">
+  <h1>סטודנטים</h1>
+</div>
+<div class="d-flex container student-container">
+ <app-add-form-user [role]="this.role" [method]="'add'"></app-add-form-user>
+
+ <app-users-list (editUser)="this.PassUser($event)" [role]="this.role"></app-users-list>
+ <app-add-form-user [role]="this.role" [user]="this.editUser" [method]="'edit'"></app-add-form-user>
+
+</div>

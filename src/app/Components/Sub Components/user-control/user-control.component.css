@@ -1,0 +1,15 @@
+.Title {
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  margin: 6px auto -6px auto;
+}
+
+@media(max-width:768px) {
+  table tr {
+    font-size: 1rem;
+  }
+
+  table th {
+    font-size: 1.2rem;
+  }
+}
