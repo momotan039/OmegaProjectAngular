@@ -11,13 +11,14 @@ import { StudentComponent } from './Components/Pages/student/student.component';
 import { TeacherComponent } from './Components/Pages/teacher/teacher.component';
 import { GroupComponent } from './Components/Pages/group/group.component';
 import { MessageComponent } from './Components/Pages/message/message.component';
-import { HeaderWithoutMenuComponent } from './Components/header-without-menu/header-without-menu.component';
+import { HeaderWithoutMenuComponent } from './Components/Layout/header-without-menu/header-without-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './Components/Sub Components/users-list/users-list.component';
 import { AddFormUserComponent } from './Components/Sub Components/add-form-user/add-form-user.component';
 import { UserControlComponent } from './Components/Sub Components/user-control/user-control.component';
 import { AdminComponent } from './Components/Pages/admin/admin.component';
+import { ObjectsComponent } from './Components/Pages/objects/objects.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { AdminComponent } from './Components/Pages/admin/admin.component';
     AddFormUserComponent,
     UserControlComponent,
     AdminComponent,
+    ObjectsComponent,
   ],
   imports: [
     BrowserModule,

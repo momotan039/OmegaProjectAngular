@@ -21,7 +21,6 @@ export class HttpService {
 
   async PostUser(user:User){
     //return await this.http.post("https://localhost:44327/api/Users/PostUser",user).toPromise();
-
      await this.http.post("https://localhost:44327/api/Users/PostUser",user).subscribe((data)=>{
     },error=>{
       console.log(error)

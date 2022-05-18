@@ -15,6 +15,7 @@ export class UserControlComponent implements OnInit {
 
      }
      @Input() role=0;
+     @Input() Title="";
   ngOnInit(): void {
     //Initialize main objects
     this.userService.resetUser(this.userService.user,this.role);

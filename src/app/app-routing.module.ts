@@ -1,3 +1,4 @@
+import { ObjectsComponent } from './Components/Pages/objects/objects.component';
 import { MessageComponent } from './Components/Pages/message/message.component';
 import { StudentComponent } from './Components/Pages/student/student.component';
 import { TeacherComponent } from './Components/Pages/teacher/teacher.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"Student",component:StudentComponent},
   {path:"Admin",component:AdminComponent},
   {path:"Message",component:MessageComponent},
+  {path:"Object",component:ObjectsComponent},
 ];
 
 @NgModule({
