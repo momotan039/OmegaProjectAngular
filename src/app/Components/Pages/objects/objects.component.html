@@ -1,16 +1,15 @@
 <div class="container Title">
   <h1>קורסים</h1>
 </div>
-<div class="container  d-flex">
-<form class="col-lg-4">
+<div class="container  d-flex gap-2">
+<form class="col-4 col-lg-5">
   <div class="line form-group">
    <label>שם הקורס</label>
    <input [(ngModel)]="this.course.name"  name="name"   class="form-control" type="text">
   </div>
   <button (click)="saveCourse()" class="btn-primary mt-2" type="submit">שמירת הקורס</button>
 </form>
-
-<table class="ps-2 pe-2 col-lg-8">
+<table class="ps-2 pe-2 col-8  col-lg-7">
 <thead>
   <th>שם הקורס</th>
   <th>פעולה</th>
@@ -19,11 +18,11 @@
 <tr *ngFor="let course of courses">
   <td>{{course.name}}</td>
   <td>
-    <button (click)="{}"  class="edit btn bg-success">
+    <button (click)="editBtn(course)"  class="edit btn bg-success">
     <i class="fa fa-edit " aria-hidden="true">
     </i>
     </button>
-    <button (click)="{}" class="edit btn bg-danger">
+    <button (click)="deleteCourse(course.id!)" class="edit btn bg-danger">
       <i class="fa fa-trash " aria-hidden="true">
       </i>
       </button>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { User } from '../../Models/User';
@@ -43,7 +43,7 @@ async EditingUser(user:User){
   });
 }
 
-async GetCourses(){
+async  GetCourses(){
   return await this.http.get("https://localhost:44327/api/Courses/GetCourses").toPromise();
 }
 
@@ -61,4 +61,12 @@ async DeleteCourse(id:number){
     console.log(error)
   });
 }
+
+async EditingCourse(course:Course){
+  return await this.http.put("https://localhost:44327/api/Courses/EditCourse",course).subscribe((res)=>{
+  },error=>{
+    console.warn((error as HttpErrorResponse).error )
+  });
+}
+
 }
