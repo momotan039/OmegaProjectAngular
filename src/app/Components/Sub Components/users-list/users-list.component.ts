@@ -5,7 +5,7 @@ import { User } from 'src/app/Models/User';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css','../../../Styles/table.css']
 })
 export class UsersListComponent implements OnInit {
   constructor(public userService:UserService) {

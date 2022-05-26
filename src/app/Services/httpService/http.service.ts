@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Course } from 'src/app/Models/Course';
 import { User } from '../../Models/User';
 
 @Injectable({
@@ -42,4 +43,22 @@ async EditingUser(user:User){
   });
 }
 
+async GetCourses(){
+  return await this.http.get("https://localhost:44327/api/Courses/GetCourses").toPromise();
+}
+
+async PostCourse(course:Course){
+   await this.http.post("https://localhost:44327/api/Courses/PostCourse",course).subscribe((data)=>{
+  },error=>{
+    console.log(error)
+  }
+  );
+}
+async DeleteCourse(id:number){
+  return await this.http.delete("https://localhost:44327/api/Courses/DeleteCourse/"+id).subscribe((res)=>{
+
+  },error=>{
+    console.log(error)
+  });
+}
 }
