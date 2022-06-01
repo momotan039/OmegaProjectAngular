@@ -7,11 +7,5 @@ import { Injectable } from '@angular/core';
 export class GroupService {
 
 constructor() { }
-Groups:Array<Group>=[
-  {
-    GroupID:152,
-    GroupContext:"פסיכומיטרי",
-    GroupName:"group1"
-  }
-]
+
 }

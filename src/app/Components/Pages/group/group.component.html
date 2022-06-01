@@ -1,1 +1,40 @@
-<p>group works!</p>
+<div class="container Title">
+  <h1>קבוצות</h1>
+</div>
+<div class="container  d-flex gap-2">
+<form class="col-4 col-lg-5">
+  <div class="line form-group">
+   <label>שם הקבוצה</label>
+   <input [(ngModel)]="this.groupe.name"  name="name"   class="form-control" type="text">
+   <select   class="mt-2 form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+
+    <option *ngFor="let course of courses" [value]="course.name">{{course.name}}</option>
+  </select>
+  </div>
+  <button (click)="saveGroupe()" class="btn-primary mt-2" type="submit">שמירת הקבוצה</button>
+</form>
+<table class="ps-2 pe-2 col-8  col-lg-7">
+<thead>
+  <th>שם הקבוצה</th>
+  <th>שם הקורס</th>
+  <th>פעולה</th>
+</thead>
+<tbody>
+<tr *ngFor="let group of groups">
+  <td>{{group.name}}</td>
+  <td>{{GetCourseNameById(group.courseId!)?.name}}</td>
+  <td>
+    <button (click)="editBtn(group)"  class="edit btn bg-success">
+    <i class="fa fa-edit " aria-hidden="true">
+    </i>
+    </button>
+    <button (click)="deleteGroupe(group.id!)" class="edit btn bg-danger">
+      <i class="fa fa-trash " aria-hidden="true">
+      </i>
+      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

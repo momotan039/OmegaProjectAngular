@@ -17,7 +17,7 @@ export class ObjectsComponent implements OnInit {
     this.course.id=0;
     this.course.name=""
 
-    this.httpService.GetCourses().then(data=>{
+    this.httpService.GetCourses(-1).then(data=>{
       this.courses=data as Course[]
     });
   }
@@ -30,7 +30,7 @@ export class ObjectsComponent implements OnInit {
 
     this.httpService.DeleteCourse(id).then(e=>{
     alert("הפעולה פוצעה בהצלחה")
-    this.httpService.GetCourses().then(data=>{
+    this.httpService.GetCourses(-1).then(data=>{
       this.courses=data as Course[]
       console.log(this.courses)
     });
@@ -50,7 +50,7 @@ export class ObjectsComponent implements OnInit {
      }
      let temp;
      //check if this Course exits in database
-     await this.httpService.GetCourses().then(d=>{
+     await this.httpService.GetCourses(-1).then(d=>{
         temp=(d as Course[]).find(c=>c.name==this.course.name)
       })
       if(temp!=undefined)
@@ -60,7 +60,7 @@ export class ObjectsComponent implements OnInit {
       }
       this.httpService.PostCourse(this.course).then(d=>{
         alert("הפעולה פוצעה בהצלחה")
-        this.httpService.GetCourses().then(data=>{
+        this.httpService.GetCourses(-1).then(data=>{
          this.courses=data as Course[]
        });
      });
@@ -72,7 +72,8 @@ export class ObjectsComponent implements OnInit {
       if(!res)
       return;
       await this.httpService.EditingCourse(this.course).then(d=>{
-        this.httpService.GetCourses().then(data=>{
+        alert("הפעולה פוצעה בהצלחה")
+        this.httpService.GetCourses(-1).then(data=>{
            this.courses=data as Course[]
         });
         console.warn(this.courses);

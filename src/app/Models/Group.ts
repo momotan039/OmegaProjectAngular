@@ -1,5 +1,5 @@
 export class Group {
- GroupID?:number
- GroupName?:string
- GroupContext?:string//name object
+ id?:number
+ name?:string
+ courseId?:number//name object
 }
