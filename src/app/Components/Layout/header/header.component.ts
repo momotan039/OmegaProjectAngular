@@ -15,7 +15,7 @@ mainMenu:Array<MainMenu>=MainMenu.mainMenu
   }
   user?:User;
   ngOnInit(): void {
-    this.user=this.userSerivce.currentUser
+    this.user=User.currentUser
 
   }
   ExistedUser(){

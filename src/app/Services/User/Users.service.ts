@@ -8,28 +8,15 @@ import { HttpService } from '../httpService/http.service';
 })
 export class UserService {
   users:Array<User>=[]
-
-  currentUser?:User;
    user=new User();
+  //  public static currentUser?:User;
   static AllUsers:Array<User>=[
   ]
   constructor(public HttpService:HttpService,
     private router:Router){
   }
 
-   CheckExistUser(userName:string,passWord:string):Boolean{
-     let found=false
-     UserService.AllUsers.forEach((user)=>{
-        if(user.email===userName && user.password===passWord)
-            {
-              this.currentUser=user
-              found=true;
-              return
-            }
-      })
 
-      return found
-  }
 
   resetUser(user:User,role:number){
     user.role=role;

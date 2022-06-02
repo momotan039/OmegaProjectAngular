@@ -6,11 +6,11 @@
   <div class="line form-group">
    <label>שם הקבוצה</label>
    <input [(ngModel)]="this.groupe.name"  name="name"   class="form-control" type="text">
-   <select   class="mt-2 form-select" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-
-    <option *ngFor="let course of courses" [value]="course.name">{{course.name}}</option>
+   <select (change)="ChangeOptionSelect($event.target)"  class="mt-2 form-select" >
+    <option value="0"  selected>בחירה שם הקורס</option>
+    <option *ngFor="let course of courses" [value]="course.id">{{course.name}} </option>
   </select>
+
   </div>
   <button (click)="saveGroupe()" class="btn-primary mt-2" type="submit">שמירת הקבוצה</button>
 </form>

@@ -78,7 +78,7 @@ async  GetGroups(){
 async PostGroups(group:Group){
    await this.http.post("https://localhost:44327/api/Groups/PostGroup",group).subscribe((data)=>{
   },error=>{
-    console.log(error)
+    console.warn(error)
   }
   );
 }

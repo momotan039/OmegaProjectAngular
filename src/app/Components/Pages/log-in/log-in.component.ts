@@ -1,3 +1,4 @@
+import { HttpService } from './../../../Services/httpService/http.service';
 import { StudentService } from '../../../Services/Student/student.service';
 import { UserService } from '../../../Services/User/Users.service';
 import { User } from '../../../Models/User';
@@ -21,33 +22,57 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 export class LogInComponent implements OnInit {
-  userName = '';
+  mail = '';
   passWord = '';
+  users:User[]=[]
   constructor(
-    private userService: UserService,
-    private studentService:StudentService,
+    private httpService:HttpService,
     private router:Router
   ){}
 
-  onSubmit(LogInForm: NgForm) {
+  async onSubmit(LogInForm: NgForm) {
     // if(this.userName=="")
     // alert("from submit empty")
-    this.userName = LogInForm.value.userName;
+    this.mail = LogInForm.value.userName;
     this.passWord = LogInForm.value.passWord;
-    if (this.userName == '' || this.passWord == '') {
+    if (this.mail == '' || this.passWord == '') {
       alert('Please Enter all Fields');
       return;
     }
-
-    if (!this.userService.CheckExistUser(this.userName, this.passWord)) {
-      alert('NotFound');
-      return
+    let user=this.users.find(u=>u.email!=this.mail&&u.password==this.passWord);
+    if(user==undefined)
+    {
+    alert("This user not found")
+      return;
     }
-    //get from database student bu current user id
-    const userId=this.userService.currentUser?.idCard
-    this.studentService.currentStudent=this.studentService.Students.find(s=>s.UserId==userId)
+    User.currentUser=user;
     this.router.navigate(['/Home'])
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    debugger
+    if(User.currentUser!=undefined)
+    {
+      this.router.navigate(['/Home'])
+      return
+    }
+     this.httpService.GetUsers().then( data=>{
+      this.users=data as User[];
+    })
+
+  }
+
+  CheckExistUser(userName:string,passWord:string):Boolean{
+    let found=false
+    UserService.AllUsers.forEach((user)=>{
+       if(user.email===userName && user.password===passWord)
+           {
+            User.currentUser=user
+             found=true;
+             return
+           }
+     })
+
+     return found
+ }
 }
