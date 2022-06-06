@@ -8,5 +8,5 @@ export class User{
   password?:string;
   id?:number
 
-static currentUser:User;
+// static currentUser:User;
 }

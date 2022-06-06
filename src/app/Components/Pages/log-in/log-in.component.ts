@@ -1,6 +1,6 @@
+import { UserService } from 'src/app/Services/User/Users.service';
 import { HttpService } from './../../../Services/httpService/http.service';
 import { StudentService } from '../../../Services/Student/student.service';
-import { UserService } from '../../../Services/User/Users.service';
 import { User } from '../../../Models/User';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -25,9 +25,12 @@ export class LogInComponent implements OnInit {
   mail = '';
   passWord = '';
   users:User[]=[]
+  currentUser:any
+  static signedIn=false
   constructor(
     private httpService:HttpService,
-    private router:Router
+    private router:Router,
+    private userService:UserService
   ){}
 
   async onSubmit(LogInForm: NgForm) {
@@ -39,19 +42,19 @@ export class LogInComponent implements OnInit {
       alert('Please Enter all Fields');
       return;
     }
-    let user=this.users.find(u=>u.email!=this.mail&&u.password==this.passWord);
+    let user=this.users.find(u=>u.email==this.mail&&u.password==this.passWord);
     if(user==undefined)
     {
     alert("This user not found")
       return;
     }
-    User.currentUser=user;
+    this.userService.currentUser=user;
+    LogInComponent.signedIn=true
     this.router.navigate(['/Home'])
   }
 
   ngOnInit(): void {
-    debugger
-    if(User.currentUser!=undefined)
+    if(this.userService.currentUser!=undefined)
     {
       this.router.navigate(['/Home'])
       return
@@ -67,7 +70,7 @@ export class LogInComponent implements OnInit {
     UserService.AllUsers.forEach((user)=>{
        if(user.email===userName && user.password===passWord)
            {
-            User.currentUser=user
+            this.userService.currentUser!=user
              found=true;
              return
            }

@@ -1,5 +1,5 @@
 import { UserService } from '../../../Services/User/Users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MainMenu } from 'src/app/Data/MainMenu';
 import { User } from 'src/app/Models/User';
 
@@ -11,14 +11,12 @@ import { User } from 'src/app/Models/User';
 export class HeaderComponent implements OnInit {
 
 mainMenu:Array<MainMenu>=MainMenu.mainMenu
+  currentUser: User | undefined;
+  @Input() singedIn=false;
   constructor(private userSerivce:UserService) {
   }
-  user?:User;
   ngOnInit(): void {
-    this.user=User.currentUser
-
-  }
-  ExistedUser(){
-    return this.user!=null
+    debugger
+    this.currentUser=this.userSerivce.currentUser
   }
 }

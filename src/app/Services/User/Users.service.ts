@@ -9,7 +9,7 @@ import { HttpService } from '../httpService/http.service';
 export class UserService {
   users:Array<User>=[]
    user=new User();
-  //  public static currentUser?:User;
+     currentUser?:User;
   static AllUsers:Array<User>=[
   ]
   constructor(public HttpService:HttpService,

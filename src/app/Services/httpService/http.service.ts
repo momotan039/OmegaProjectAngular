@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { Group } from 'src/app/Models/Group';
+import { Message } from 'src/app/Models/Message';
 import { User } from '../../Models/User';
 
 @Injectable({
@@ -19,6 +20,10 @@ export class HttpService {
 
   async GetUsersByRole(role:number){
     return await this.http.get("https://localhost:44327/api/Users/GetUsersByRole/"+role).toPromise();
+  }
+
+  async GetFreindsByUser(Id:number){
+    return await this.http.get("https://localhost:44327/api/Users/GetFreindsByUser/"+Id).toPromise();
   }
 
   async PostUser(user:User){
@@ -95,5 +100,13 @@ async EditingGroups(group:Group){
   },error=>{
     console.warn((error as HttpErrorResponse).error )
   });
+}
+
+async PostMessage(msg:Message){
+  await this.http.post("https://localhost:44327/api/Messages/SendMessage",msg).subscribe((data)=>{
+ },error=>{
+   console.warn(error)
+ }
+ );
 }
 }

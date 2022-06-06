@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
    }
    GetRule(){
      debugger
-     let role=User.currentUser?.role
+     let role=this.userService.currentUser?.role
      if(role==1)
      return "admin";
      else if(role==2)
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
      return "Student"
    }
   ngOnInit(): void {
-    this._firstName=User.currentUser?.firstName;
+    this._firstName=this.userService.currentUser?.firstName;
   }
 
 }

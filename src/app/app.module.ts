@@ -19,6 +19,7 @@ import { AddFormUserComponent } from './Components/Sub Components/add-form-user/
 import { UserControlComponent } from './Components/Sub Components/user-control/user-control.component';
 import { AdminComponent } from './Components/Pages/admin/admin.component';
 import { ObjectsComponent } from './Components/Pages/objects/objects.component';
+import { MyAppComponent } from './Components/Layout/my-app/my-app.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { ObjectsComponent } from './Components/Pages/objects/objects.component';
     UserControlComponent,
     AdminComponent,
     ObjectsComponent,
+    MyAppComponent,
   ],
   imports: [
     BrowserModule,

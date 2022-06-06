@@ -1,0 +1,4 @@
+
+<app-header [singedIn]="this.singedIn"></app-header>
+<h1>{{singedIn}}</h1>
+<router-outlet (deactivate)="changeComponent($event)"  ></router-outlet>
