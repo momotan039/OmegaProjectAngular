@@ -14,8 +14,11 @@ export class HttpService {
 
   }
 
-  async GetUsers(){
-    return await this.http.get("https://localhost:44327/api/Users/GetUsers").toPromise();
+  async GetUsers(id:number=-1){
+    if(id==-1)
+    return await this.http.get("https://localhost:44327/api/Users/GetUsers/").toPromise();
+
+    return await this.http.get("https://localhost:44327/api/Users/GetUsers/"+id).toPromise();
   }
 
   async GetUsersByRole(role:number){
@@ -51,6 +54,9 @@ async EditingUser(user:User){
 
 async  GetCourses(id:number):Promise<Course|undefined|Array<Course>>{
   return await this.http.get("https://localhost:44327/api/Courses/GetCourses/"+id).toPromise();
+}
+async  GetCoursesByUserId(id:number){
+  return await this.http.get("https://localhost:44327/api/Courses/GetCoursesByUserId/"+id).toPromise();
 }
 
 async PostCourse(course:Course){
@@ -104,6 +110,22 @@ async EditingGroups(group:Group){
 
 async PostMessage(msg:Message){
   await this.http.post("https://localhost:44327/api/Messages/SendMessage",msg).subscribe((data)=>{
+ },error=>{
+   console.warn(error)
+ }
+ );
+}
+
+async  GetMessagesBySender(idUser:number){
+  return await this.http.get("https://localhost:44327/api/Messages/GetMessagesBySender/"+idUser).toPromise();
+}
+async  GetMessagesByReciver(idUser:number){
+  return await this.http.get("https://localhost:44327/api/Messages/GetMessagesByReciver/"+idUser).toPromise();
+}
+
+
+async ChangeStatusMessage(msg:Message){
+  await this.http.put("https://localhost:44327/api/Messages/ChangeStatusMessage",msg).subscribe((data)=>{
  },error=>{
    console.warn(error)
  }

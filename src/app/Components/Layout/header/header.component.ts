@@ -10,13 +10,13 @@ import { User } from 'src/app/Models/User';
 })
 export class HeaderComponent implements OnInit {
 
-mainMenu:Array<MainMenu>=MainMenu.mainMenu
-  currentUser: User | undefined;
-  @Input() singedIn=false;
+static mainMenu:Array<MainMenu>=[]
+_mainMenu:MainMenu[]=[]
+  @Input() currentUser: User | undefined;
+  // @Input() singedIn=false;
   constructor(private userSerivce:UserService) {
+    this._mainMenu=HeaderComponent.mainMenu
   }
   ngOnInit(): void {
-    debugger
-    this.currentUser=this.userSerivce.currentUser
   }
 }

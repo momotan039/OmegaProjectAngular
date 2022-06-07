@@ -1,4 +1,3 @@
 
-<app-header [singedIn]="this.singedIn"></app-header>
-<h1>{{singedIn}}</h1>
-<router-outlet (deactivate)="changeComponent($event)"  ></router-outlet>
+<app-header [currentUser]="this.currentUser"></app-header>
+<router-outlet (activate)="activeComponent($event)" (deactivate)="deactiveComponent($event)"  ></router-outlet>

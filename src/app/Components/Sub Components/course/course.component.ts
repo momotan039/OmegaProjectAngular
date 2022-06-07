@@ -1,16 +1,18 @@
-import { HttpService } from './../../../Services/httpService/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
+import { HttpService } from 'src/app/Services/httpService/http.service';
+import { UserService } from 'src/app/Services/User/Users.service';
+
 @Component({
-  selector: 'app-objects',
-  templateUrl: './objects.component.html',
-  styleUrls: ['./objects.component.css','../../../Styles/table.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class ObjectsComponent implements OnInit {
+export class CourseComponent implements OnInit {
 
   course=new Course()
   courses:Array<Course>=[]
-  constructor(private httpService:HttpService) {
+  constructor(private httpService:HttpService,private userService:UserService) {
   }
 
   ngOnInit(): void {
@@ -81,4 +83,5 @@ export class ObjectsComponent implements OnInit {
     }
     this.course.name=""
   }
+
 }

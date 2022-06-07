@@ -18,8 +18,9 @@ import { UsersListComponent } from './Components/Sub Components/users-list/users
 import { AddFormUserComponent } from './Components/Sub Components/add-form-user/add-form-user.component';
 import { UserControlComponent } from './Components/Sub Components/user-control/user-control.component';
 import { AdminComponent } from './Components/Pages/admin/admin.component';
-import { ObjectsComponent } from './Components/Pages/objects/objects.component';
 import { MyAppComponent } from './Components/Layout/my-app/my-app.component';
+import { CourseComponent } from './Components/Sub Components/course/course.component';
+import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-groups.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +37,9 @@ import { MyAppComponent } from './Components/Layout/my-app/my-app.component';
     AddFormUserComponent,
     UserControlComponent,
     AdminComponent,
-    ObjectsComponent,
     MyAppComponent,
+    CourseComponent,
+    MyGroupsComponent,
   ],
   imports: [
     BrowserModule,

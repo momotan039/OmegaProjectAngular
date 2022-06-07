@@ -59,6 +59,7 @@ export class LogInComponent implements OnInit {
       this.router.navigate(['/Home'])
       return
     }
+    debugger
      this.httpService.GetUsers().then( data=>{
       this.users=data as User[];
     })

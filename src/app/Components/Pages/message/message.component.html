@@ -2,11 +2,12 @@
   <h1>הודעות</h1>
 </div>
 <div class="container d-flex gap-2">
-<form class="col-lg-6">
+<form class="col-lg-4">
   <div class="mt-3 form-group">
     <label>ההודעה כותרת</label>
     <input (change)="ChangeTitle($event.target)" type="text" class="form-control">
     <label>שליחה ל </label>
+
     <select (change)="selectFreind($event.target)"  class="mt-2 form-select" >
       <option value="0"  selected>שליחה ל</option>
       <option [value]="friend.id"  *ngFor="let friend of friends">
@@ -18,26 +19,34 @@
       <label for="exampleFormControlTextarea1">תובן ההודעה</label>
       <textarea (change)="textAreaChange($event.target)" class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
     </div>
-
-
-
   </div>
   <button type="submit" (click)="SendMessage()" class="btn btn-primary mb-2">שליחה</button>
 </form>
-<div class="col-lg-6">
-  <ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Cras justo odio
-      <span class="badge badge-primary badge-pill">14</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Dapibus ac facilisis in
-      <span class="badge badge-primary badge-pill">2</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Morbi leo risus
-      <span class="badge badge-primary badge-pill">1</span>
-    </li>
-  </ul>
+<div style="background-color: #0a6e8c;"  class="col-lg-4">
+  <label>הודעות יוצאות</label>
+  <div  class="list-group listMessages">
+    <div  #refMsg *ngFor="let msg of sentMsgs"   class="list-group-item msg">
+      <span class="title">{{msg.title}}</span>
+      <div #refContent class="content">
+        {{msg.contents}}
+    </div>
+    </div>
+  </div>
+</div>
+
+<div style="background-color: #0a6e8c;" class="col-lg-4">
+  <label>הודעות נכנסות</label>
+  <div  class="list-group listMessages">
+    <div  #refMsg *ngFor="let msg of recivedMsgs" [ngClass]="!msg.isOpened?'active':''"  class="list-group-item msg ">
+      <i *ngIf="msg.sender?.role==1" style="color:red;" class="fa-user-shield fas"></i>
+      <button #refbtnShow (click)="showMessage(refbtnHide,refMsg,refContent,refbtnShow,msg)" class="btn-dark"><i class="fa fa-eye"> הצג הכל</i></button>
+      <span class="info">{{msg.sender?.email}}</span>
+      <span class="title">{{msg.title}}</span>
+      <div #refContent class="content">
+        {{msg.contents}}
+          <button style="display: none;" #refbtnHide  (click)="HideMessage(refbtnHide,refContent,refbtnShow)" class="btn-primary"><i class="fa fa-eye"> הסתר הכל</i></button>
+    </div>
+    </div>
+  </div>
 </div>
 </div>

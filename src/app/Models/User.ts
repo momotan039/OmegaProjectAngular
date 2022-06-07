@@ -1,3 +1,4 @@
+import { Message } from 'src/app/Models/Message';
 export class User{
   idCard?:string;
   firstName?:string;
@@ -7,6 +8,7 @@ export class User{
   email?:string;
   password?:string;
   id?:number
+  messages?:Message[]
 
-// static currentUser:User;
+
 }

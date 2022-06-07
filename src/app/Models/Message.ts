@@ -1,3 +1,5 @@
+import { User } from "./User"
+
 export class Message {
   id?:number
   groupID?:number
@@ -6,4 +8,5 @@ export class Message {
   contents?:string
   title?:string
   isOpened=false
+  sender?:User
 }

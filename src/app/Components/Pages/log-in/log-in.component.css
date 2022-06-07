@@ -30,9 +30,10 @@ position: relative;
 .Login .row i{
   color: white;
   position: absolute;
-  right: 0.2rem;
-  top: 2rem;
   font-size: 1.6rem;
+  top: 2rem;
+  left: 0;
+  width: fit-content;
 }
 .Login .row input{
   border-radius: 23px;

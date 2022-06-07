@@ -1,6 +1,8 @@
 import { UserService } from '../../Services/User/Users.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/User';
+import { MainMenu } from 'src/app/Data/MainMenu';
+import { HeaderComponent } from '../Layout/header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,7 @@ import { User } from 'src/app/Models/User';
 })
 export class HomeComponent implements OnInit {
   _firstName?:string
+  static firstTimeEnter=false
   constructor(private userService:UserService) {
    }
    GetRule(){
