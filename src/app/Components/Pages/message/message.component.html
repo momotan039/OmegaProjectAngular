@@ -8,10 +8,17 @@
     <input (change)="ChangeTitle($event.target)" type="text" class="form-control">
     <label>שליחה ל </label>
 
-    <select (change)="selectFreind($event.target)"  class="mt-2 form-select" >
+    <select *ngIf="currentUser.role!=1" (change)="SelectReciver($event.target)"  class="mt-2 form-select" >
       <option value="0"  selected>שליחה ל</option>
       <option [value]="friend.id"  *ngFor="let friend of friends">
       {{friend.firstName}}~{{friend.email}}
+      </option>
+    </select>
+
+    <select *ngIf="currentUser.role==1" (change)="SelectReciver($event.target)"  class="mt-2 form-select" >
+      <option value="0"  selected>שליחה ל</option>
+      <option [value]="group.id"  *ngFor="let group of groups">
+      {{group.name}}
       </option>
     </select>
 

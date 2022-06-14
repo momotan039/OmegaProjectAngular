@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { Group } from 'src/app/Models/Group';
 import { Message } from 'src/app/Models/Message';
+import {  MessageGroup } from 'src/app/Models/MessageGroup';
 import { User } from '../../Models/User';
 
 @Injectable({
@@ -116,9 +117,18 @@ async PostMessage(msg:Message){
  );
 }
 
+async PostMessageByGroup(msg:MessageGroup){
+  await this.http.post("https://localhost:44327/api/Messages/SendMessageByGroup",msg).subscribe((data)=>{
+ },error=>{
+   console.warn(error)
+ }
+ );
+}
+
 async  GetMessagesBySender(idUser:number){
   return await this.http.get("https://localhost:44327/api/Messages/GetMessagesBySender/"+idUser).toPromise();
 }
+
 async  GetMessagesByReciver(idUser:number){
   return await this.http.get("https://localhost:44327/api/Messages/GetMessagesByReciver/"+idUser).toPromise();
 }

@@ -1,9 +1,11 @@
+import { MessageGroup } from './../../../Models/MessageGroup';
 import { HttpService } from './../../../Services/httpService/http.service';
 import { UserService } from 'src/app/Services/User/Users.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/User';
 import { Message } from 'src/app/Models/Message';
 import { flatMap, interval, mapTo } from 'rxjs';
+import { Group } from 'src/app/Models/Group';
 
 @Component({
   selector: 'app-message',
@@ -14,41 +16,40 @@ export class MessageComponent implements OnInit {
   msg=new Message();
   sentMsgs:Message[]=[]
   recivedMsgs:Message[]=[]
+  currentUser:any
   constructor(private HttpService:HttpService,private userService:UserService) { }
   friends:Array<User>=[]
+  groups:Array<Group>=[]
    ngOnInit() {
-    interval(1000*60)//get reveved messages after every 1 second
+    //get current User
+    this.currentUser=this.userService.currentUser
+//get reveved messages after every 1 minute
+    interval(1000*60)
     .subscribe(d=>{
-      this.HttpService.GetMessagesByReciver(this.userService.currentUser?.id!).then(data=>{
+      this.HttpService.GetMessagesByReciver(this.currentUser.id).then(data=>{
         this.recivedMsgs=(data as Message[])
       })
     })
+    //set sender Id
+     this.msg.senderId=this.currentUser.id
 
-     this.msg.senderId=this.userService.currentUser?.id
-     //get all messages that sended
-    //  this.userService.currentUser?.messages?.forEach(msg=>{
-    //   if(msg.senderId==this.userService.currentUser?.id)
-    //     this.sentMsgs.push(msg);
-    //   else if(msg.reciverId==this.userService.currentUser?.id)
-    //     this.recivedMsgs.push(msg);
-    // })
-    this.HttpService.GetMessagesBySender(this.userService.currentUser?.id!).then(data=>{
+    this.HttpService.GetMessagesBySender(this.currentUser.id!).then(data=>{
       this.sentMsgs=(data as Message[])
     })
-    this.HttpService.GetMessagesByReciver(this.userService.currentUser?.id!).then(data=>{
+    this.HttpService.GetMessagesByReciver(this.currentUser.id!).then(data=>{
       this.recivedMsgs=(data as Message[])
     })
     //get friends
-    if(this.userService.currentUser?.role!=1)
-     this.HttpService.GetFreindsByUser(this.userService.currentUser?.id!).then(data=>{
+    if(this.currentUser.role!=1)
+     this.HttpService.GetFreindsByUser(this.currentUser.id!).then(data=>{
       this.friends=(data as User[])
     })
     else
-     this.HttpService.GetUsers().then(data=>{
-      this.friends=(data as User[])
+     this.HttpService.GetGroups().then(data=>{
+      this.groups=(data as Group[])
     })
   }
-  selectFreind(elemnt:any){
+  SelectReciver(elemnt:any){
     this.msg.reciverId=Number(elemnt.value)
   }
   SendMessage(){
@@ -67,13 +68,27 @@ export class MessageComponent implements OnInit {
       alert("לא מותר לשלוח הודעה ללא כותרת !!")
       return;
     }
-
+    //send to reciver user
+    if(this.currentUser.role!=1)
     this.HttpService.PostMessage(this.msg).then(e=>{
       alert("Sended Message")
-      this.HttpService.GetMessagesBySender(this.userService.currentUser?.id!).then(data=>{
+      this.HttpService.GetMessagesBySender(this.currentUser.id!).then(data=>{
         this.sentMsgs=(data as Message[])
       })
     })
+ //send to reciver Group to share to  users
+    else{
+      let msgGroup=new MessageGroup();
+      msgGroup.contents=this.msg.contents
+      msgGroup.title=this.msg.title
+      msgGroup.GroupId=this.msg.senderId
+      this.HttpService.PostMessageByGroup(this.msg).then(e=>{
+        alert("Sended Message")
+        this.HttpService.GetMessagesBySender(this.currentUser.id!).then(data=>{
+          this.sentMsgs=(data as Message[])
+        })
+      })
+    }
   }
   textAreaChange(elemnt:any){
     this.msg.contents=elemnt.value
