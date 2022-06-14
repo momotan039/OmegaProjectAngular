@@ -1,12 +1,10 @@
-import { User } from "./User"
 
-export class Message {
+export class MessageGroup {
   id?:number
-  reciverId?:number
+  GroupId?:number
   senderId?:number
   contents?:string
   title?:string
   isOpened=false
-  sender?:User
   SendingDate?:Date
 }
