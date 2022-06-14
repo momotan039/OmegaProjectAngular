@@ -9,7 +9,7 @@
       <input required ngModel name="passWord" placeholder="סיסמה"  type="password">
       <i class="fas fa-lock"></i>
     </div>
-    <button type="submit">כניסה</button>
+    <button [disabled]="!LogInForm.valid" type="submit">כניסה</button>
   </div>
 </form>
 
