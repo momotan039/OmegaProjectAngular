@@ -8,5 +8,5 @@ export class Message {
   title?:string
   isOpened=false
   sender?:User
-  SendingDate?:Date
+  sendingDate?:Date
 }

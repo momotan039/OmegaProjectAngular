@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService) {
    }
    GetRule(){
-     debugger
      let role=this.userService.currentUser?.role
      if(role==1)
      return "admin";

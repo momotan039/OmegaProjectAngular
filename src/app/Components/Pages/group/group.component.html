@@ -25,14 +25,18 @@
   <td>{{group.name}}</td>
   <td>{{GetCourseNameById(group.courseId!)?.name}}</td>
   <td>
-    <button (click)="editBtn(group)"  class="edit btn bg-success">
+    <button (click)="editBtn(group)"  class=" btn bg-success">
     <i class="fa fa-edit " aria-hidden="true">
     </i>
     </button>
-    <button (click)="deleteGroupe(group.id!)" class="edit btn bg-danger">
+    <button (click)="deleteGroupe(group.id!)" class=" btn bg-danger">
       <i class="fa fa-trash " aria-hidden="true">
       </i>
       </button>
+    <button [routerLink]="'/GroupDetails/'+group.id"  class="bg-body btn">
+      <i class="fa fa-eye " aria-hidden="true">
+      </i>
+     </button>
 </td>
 </tr>
 </tbody>

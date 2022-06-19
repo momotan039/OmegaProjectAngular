@@ -9,6 +9,4 @@ export class User{
   password?:string;
   id?:number
   messages?:Message[]
-
-
 }

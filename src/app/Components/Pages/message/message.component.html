@@ -34,6 +34,7 @@
   <div  class="list-group listMessages">
     <div  #refMsg *ngFor="let msg of sentMsgs"   class="list-group-item msg">
       <span class="title">{{msg.title}}</span>
+      נשלחה~<span style="color: red;">{{CustomDate(msg.sendingDate!)}}</span>
       <div #refContent class="content">
         {{msg.contents}}
     </div>
@@ -48,7 +49,8 @@
       <i *ngIf="msg.sender?.role==1" style="color:red;" class="fa-user-shield fas"></i>
       <button #refbtnShow (click)="showMessage(refbtnHide,refMsg,refContent,refbtnShow,msg)" class="btn-dark"><i class="fa fa-eye"> הצג הכל</i></button>
       <span class="info">{{msg.sender?.email}}</span>
-      <span class="title">{{msg.title}}</span>
+      <span class="title">{{msg.title}}</span>~
+      <span >{{CustomDate(msg.sendingDate!)}}</span>
       <div #refContent class="content">
         {{msg.contents}}
           <button style="display: none;" #refbtnHide  (click)="HideMessage(refbtnHide,refContent,refbtnShow)" class="btn-primary"><i class="fa fa-eye"> הסתר הכל</i></button>

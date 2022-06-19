@@ -1,3 +1,4 @@
+import { GroupDetailsComponent } from './Components/Pages/Details/group-details/group-details.component';
 import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-groups.component';
 import { CourseComponent } from './Components/Sub Components/course/course.component';
 import { MessageComponent } from './Components/Pages/message/message.component';
@@ -10,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './Components/Pages/register/register.component';
 import { HomeComponent } from './Components/home/home.component';
 import { AdminComponent } from './Components/Pages/admin/admin.component';
+import { UserDetailsComponent } from './Components/Pages/Details/user-details/user-details.component';
 
 const routes: Routes = [
   {path:"",component:LogInComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:"Admin",component:AdminComponent},
   {path:"Message",component:MessageComponent},
   {path:"Course",component:CourseComponent},
+  {path:"UserDetails/:id",component:UserDetailsComponent},
+  {path:"GroupDetails/:id",component:GroupDetailsComponent},
 ];
 
 @NgModule({

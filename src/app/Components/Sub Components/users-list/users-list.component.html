@@ -30,6 +30,10 @@
             <i class="fa fa-trash " aria-hidden="true">
             </i>
             </button>
+            <button *ngIf="role!=1" [routerLink]="'/UserDetails/'+u.id"  class="bg-body btn">
+              <i class="fa fa-eye " aria-hidden="true">
+              </i>
+             </button>
       </td>
    </tr>
     </tbody>

@@ -81,8 +81,10 @@ export class MessageComponent implements OnInit {
       let msgGroup=new MessageGroup();
       msgGroup.contents=this.msg.contents
       msgGroup.title=this.msg.title
-      msgGroup.GroupId=this.msg.senderId
-      this.HttpService.PostMessageByGroup(this.msg).then(e=>{
+      msgGroup.GroupId=this.msg.reciverId
+      msgGroup.senderId=this.msg.senderId
+      debugger
+      this.HttpService.PostMessageByGroup(msgGroup).then(e=>{
         alert("Sended Message")
         this.HttpService.GetMessagesBySender(this.currentUser.id!).then(data=>{
           this.sentMsgs=(data as Message[])
@@ -123,5 +125,10 @@ export class MessageComponent implements OnInit {
   async GetEmailUserById(id:number){
     let u=  this.HttpService.GetUsers(id) as User
     return "saf"
+  }
+
+
+  CustomDate(date:Date){
+    return new Date(Date.parse(date+"")).toLocaleString()
   }
 }

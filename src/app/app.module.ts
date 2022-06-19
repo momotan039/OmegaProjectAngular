@@ -21,6 +21,10 @@ import { AdminComponent } from './Components/Pages/admin/admin.component';
 import { MyAppComponent } from './Components/Layout/my-app/my-app.component';
 import { CourseComponent } from './Components/Sub Components/course/course.component';
 import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-groups.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GroupDetailsComponent } from './Components/Pages/Details/group-details/group-details.component';
+import { UserDetailsComponent } from './Components/Pages/Details/user-details/user-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,12 +44,15 @@ import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-grou
     MyAppComponent,
     CourseComponent,
     MyGroupsComponent,
+    GroupDetailsComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

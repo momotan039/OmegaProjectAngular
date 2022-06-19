@@ -1,0 +1,31 @@
+<div style="text-align: center;" class="container title mt-2">
+  <h1>{{user.firstName}} {{user.lastName}}</h1>
+</div>
+
+<div class="container">
+  <h1>id Card:{{user.idCard}}</h1>
+  <h1>first name:{{user.firstName}}</h1>
+  <h1>last name:{{user.lastName}}</h1>
+  <h1>phone:{{user.phone}}</h1>
+  <h1>email:{{user.email}}</h1>
+  <h1>status:{{GetRoleString(user)}}</h1>
+</div>
+
+<div class="title container text-center">
+  <h1>Groups</h1>
+</div>
+<div class="container p-3">
+  <div class="d-flex flex-wrap text-black text-center">
+    <div  *ngFor="let group of groups" class="card col-lg-6 ">
+      <div class="card-header">
+        <h1>course name:{{group.course.name}}</h1>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">name:{{group.name}}</h5>
+        <h5 class="card-title">openingDate:{{CustomDate(group.openingDate)}}</h5>
+        <h5 class="card-title">closingDate:{{CustomDate(group.closingDate)}}</h5>
+        <a [routerLink]="'/GroupDetails/'+group.id" class="btn btn-primary">show details</a>
+      </div>
+    </div>
+  </div>
+</div>

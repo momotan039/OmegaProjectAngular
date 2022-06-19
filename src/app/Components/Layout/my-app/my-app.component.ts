@@ -20,9 +20,8 @@ export class MyAppComponent implements OnInit {
   singedIn=false;
   ngOnInit(): void {
 
-    debugger
-    if(this.currentUser==undefined)
-    this.router.navigate(['/'])
+    // if(this.currentUser==undefined)
+    // this.router.navigate(['/'])
 
   }
   deactiveComponent(component:Component){

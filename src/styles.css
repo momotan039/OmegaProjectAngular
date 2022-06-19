@@ -50,3 +50,6 @@ border-radius: 5px;
   border-radius: 10px 10px 0px 0px;
   margin: 6px auto -6px auto;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

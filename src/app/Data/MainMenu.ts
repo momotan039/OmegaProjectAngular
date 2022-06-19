@@ -22,7 +22,7 @@ export class MainMenu {
     {minAccessRole:1, Title: 'קורסים', fontAwesomeClass: 'fas fa-book', href: 'Course'},
 
     { minAccessRole:1,Title: 'קבוצות', fontAwesomeClass: 'fas fa-users', href: 'Group' },
-    { minAccessRole:3,Title: 'קבוצות', fontAwesomeClass: 'fas fa-users', href: 'MyGroup' },
+    // { minAccessRole:3,Title: 'קבוצות', fontAwesomeClass: 'fas fa-users', href: 'MyGroup' },
 
     { minAccessRole:3,Title: 'הודעות', fontAwesomeClass: 'fas fa-comments', href: 'Message' },
   ];

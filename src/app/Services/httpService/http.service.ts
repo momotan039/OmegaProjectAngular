@@ -21,11 +21,12 @@ export class HttpService {
 
     return await this.http.get("https://localhost:44327/api/Users/GetUsers/"+id).toPromise();
   }
-
   async GetUsersByRole(role:number){
     return await this.http.get("https://localhost:44327/api/Users/GetUsersByRole/"+role).toPromise();
   }
-
+  async GetUsersByGroupId(id:number){
+    return await this.http.get("  https://localhost:44327/api/Users/GetUsersByGroupId/"+id).toPromise();
+  }
   async GetFreindsByUser(Id:number){
     return await this.http.get("https://localhost:44327/api/Users/GetFreindsByUser/"+Id).toPromise();
   }
@@ -86,7 +87,9 @@ async EditingCourse(course:Course){
 async  GetGroups(){
   return await this.http.get("https://localhost:44327/api/Groups/GetGroups").toPromise();
 }
-
+async  GetGroupsByUserId(id:number){
+  return await this.http.get("https://localhost:44327/api/Groups/GetGroupsByUserId/"+id).toPromise();
+}
 async PostGroups(group:Group){
    await this.http.post("https://localhost:44327/api/Groups/PostGroup",group).subscribe((data)=>{
   },error=>{
