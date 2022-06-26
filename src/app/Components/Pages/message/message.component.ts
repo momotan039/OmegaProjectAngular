@@ -4,8 +4,9 @@ import { UserService } from 'src/app/Services/User/Users.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/User';
 import { Message } from 'src/app/Models/Message';
-import { flatMap, interval, mapTo } from 'rxjs';
+import { interval } from 'rxjs';
 import { Group } from 'src/app/Models/Group';
+import { MyTools } from 'src/app/Services/MyTools/MyTools';
 
 @Component({
   selector: 'app-message',
@@ -129,6 +130,6 @@ export class MessageComponent implements OnInit {
 
 
   CustomDate(date:Date){
-    return new Date(Date.parse(date+"")).toLocaleString()
+    return  MyTools.CustomDate(date)
   }
 }

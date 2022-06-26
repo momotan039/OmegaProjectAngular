@@ -2,6 +2,7 @@ import { Course } from './../../../Models/Course';
 import { HttpService } from './../../../Services/httpService/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'src/app/Models/Group';
+import { MyTools } from 'src/app/Services/MyTools/MyTools';
 
 @Component({
 selector: 'app-group',
@@ -11,18 +12,29 @@ styleUrls: ['./group.component.css'],
 export class GroupComponent implements OnInit {
 groups: Group[] = [];
 courses: Course[] = [];
-groupe = new Group();
+group = new Group();
 coruse = new Course();
+ccdate=new Date()
 constructor(private httpService: HttpService) {}
 
+getCorrectSyntaxDate(){
+  let dvar=new Date().toDateString()
+  let temp="";
+  for (let index = dvar.length; index >=0; index--) {
+    temp+=dvar[index]
+  }
+  alert(temp)
+  return temp
+}
 ngOnInit(): void {
-this.groupe.name = '';
-this.groupe.id = 0;
-this.groupe.courseId = 0;
+
+this.group.name = '';
+this.group.id = 0;
+this.group.courseId = 0;
+
 this.coruse.id = 0;
 this.coruse.name = '';
 //get groups
-debugger
 this.httpService.GetGroups().then((data) => {
 this.groups = data as Group[];
 });
@@ -48,12 +60,22 @@ this.groups = data as Group[];
 }
 
 editBtn(g: Group) {
-this.groupe = g;
+this.group = g;
 this.coruse.name = this.GetCourseNameById(g.courseId!)?.name!;
 }
 
 async saveGroupe() {
-if (this.groupe.name == '') {
+  if(this.group.openingDate==undefined)
+  {
+    alert('נא להכניס את תאריך פתיחת הקבוצה !!');
+    return;
+  }
+  if(this.group.closingDate==undefined)
+  {
+    alert('נא להכניס את תאריך סיום הקבוצה !!');
+    return;
+  }
+if (this.group.name == '') {
 alert('נא להכניס את שם הקבוצה !!');
 return;
 }
@@ -61,34 +83,36 @@ if (this.coruse.id == 0) {
 alert('נא לבחור את הקורס');
 return;
 }
-//check if id is 0 so is its add new groupe opearation
-if (this.groupe.id == 0) {
-this.groupe.courseId = this.coruse.id;
+
+
+//check if id is 0 so is its add new group opearation
+if (this.group.id == 0) {
+this.group.courseId = this.coruse.id;
 let temp;
 //check if this Group exits in database
 await this.httpService.GetGroups().then((d) => {
-temp = (d as Group[]).find((c) => c.name == this.groupe.name||c.id==this.groupe.id);
+temp = (d as Group[]).find((c) => c.name == this.group.name||c.id==this.group.id);
 });
 if (temp != undefined) {
 alert('הקבוצה הזו כבר קיימת במערכת !!');
 return;
 }
 debugger
-this.httpService.PostGroups(this.groupe).then((d) => {
+this.httpService.PostGroups(this.group).then((d) => {
 alert('הפעולה פוצעה בהצלחה');
 this.httpService.GetGroups().then((data) => {
 this.groups = data as Group[];
-
 });
 });
 }
-//else is its edit Course operation
+//else is its edit Group operation
 else {
 let res = window.confirm('האם ברצונך להמשיך ?');
 if (!res) return;
 debugger
-this.groupe.courseId=this.coruse.id
-await this.httpService.EditingGroups(this.groupe).then((d) => {
+//reset course Id
+this.group.courseId=this.coruse.id
+await this.httpService.EditingGroups(this.group).then((d) => {
 alert('הפעולה פוצעה בהצלחה');
 this.httpService.GetGroups().then((data) => {
 this.groups = data as Group[];
@@ -96,16 +120,9 @@ this.groups = data as Group[];
 });
 }
 
-this.groupe.name = '';
-this.groupe.courseId = 0;
+this.group.name = '';
+this.group.courseId = 0;
 }
-// async GetCourseNameById(id:number):Promise<string>{
-//   let course=new Course();
-//   await this.HttpService.GetCourses(id).then(data => {
-//       course=data as Course;
-//   });
-//   return course.name!;
-// }
 
 ChangeOptionSelect(elem: any) {
 let idCourse = elem.value;
@@ -116,7 +133,17 @@ return;
 this.coruse.id = Number(idCourse);
 }
 
-NavigateToGroup(id:number|undefined){
+ChangeDatePicker(elm:any,num:number){
+  if(num==0)
+ this.group.openingDate=elm.value
+ else
+ this.group.closingDate=elm.value
+}
 
+CustomDate(date:Date){
+  return  MyTools.CustomDate(date)
+}
+StringDate(date:Date){
+  return date.toLocaleDateString();
 }
 }
