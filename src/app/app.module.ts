@@ -24,6 +24,8 @@ import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-grou
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GroupDetailsComponent } from './Components/Pages/Details/group-details/group-details.component';
 import { UserDetailsComponent } from './Components/Pages/Details/user-details/user-details.component';
+import { GradeComponent } from './Components/Pages/grade/grade.component';
+import { HomeWorkComponent } from './Components/Pages/home-work/home-work.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { UserDetailsComponent } from './Components/Pages/Details/user-details/us
     MyGroupsComponent,
     GroupDetailsComponent,
     UserDetailsComponent,
+    GradeComponent,
+    HomeWorkComponent,
   ],
   imports: [
     BrowserModule,

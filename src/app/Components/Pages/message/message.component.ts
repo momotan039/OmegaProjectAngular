@@ -36,6 +36,7 @@ export class MessageComponent implements OnInit {
 
     this.HttpService.GetMessagesBySender(this.currentUser.id!).then(data=>{
       this.sentMsgs=(data as Message[])
+      console.log(this.sentMsgs)
     })
     this.HttpService.GetMessagesByReciver(this.currentUser.id!).then(data=>{
       this.recivedMsgs=(data as Message[])

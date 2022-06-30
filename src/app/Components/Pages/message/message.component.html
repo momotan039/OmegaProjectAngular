@@ -30,15 +30,19 @@
   <button type="submit" (click)="SendMessage()" class="btn btn-primary mb-2">שליחה</button>
 </form>
 
-
-<div style="background-color: #0a6e8c;"  class="col-lg-4">
+<div style="background-color: #0a6e8c;" class="col-lg-4">
   <label>הודעות יוצאות</label>
   <div  class="list-group listMessages">
-    <div  #refMsg *ngFor="let msg of sentMsgs"   class="list-group-item msg">
+    <div  #refMsg *ngFor="let msg of sentMsgs"  class="list-group-item msg ">
+      <div class="mb-2">
+        <span style="color: red; ">נשלחה ב~{{msg.sendingDate!}}</span>
+      <button #refbtnShow (click)="showMessage(refbtnHide,refMsg,refContent,refbtnShow,msg)" class="btn-dark"><i class="fa fa-eye"> הצג הכל</i></button>
+      </div>
+      <span *ngIf="msg.reciver" class="info">{{msg.reciver?.email}}</span>
       <span class="title">{{msg.title}}</span>
-      נשלחה~<span style="color: red;">{{CustomDate(msg.sendingDate!)}}</span>
       <div #refContent class="content">
         {{msg.contents}}
+          <button style="display: none;" #refbtnHide  (click)="HideMessage(refbtnHide,refContent,refbtnShow)" class="btn-primary"><i class="fa fa-eye"> הסתר הכל</i></button>
     </div>
     </div>
   </div>
@@ -48,11 +52,15 @@
   <label>הודעות נכנסות</label>
   <div  class="list-group listMessages">
     <div  #refMsg *ngFor="let msg of recivedMsgs" [ngClass]="!msg.isOpened?'active':''"  class="list-group-item msg ">
-      <i *ngIf="msg.sender?.role==1" style="color:red;" class="fa-user-shield fas"></i>
+      <div class="mb-2">
+        <i *ngIf="msg.sender?.role==1" style="color:red;" class="fa-user-shield fas"></i>
+      <div class="float-start">
+        <span style="color: red; ">נשלחה ב~{{msg.sendingDate!}}</span>
       <button #refbtnShow (click)="showMessage(refbtnHide,refMsg,refContent,refbtnShow,msg)" class="btn-dark"><i class="fa fa-eye"> הצג הכל</i></button>
+      </div>
+      </div>
       <span class="info">{{msg.sender?.email}}</span>
-      <span class="title">{{msg.title}}</span>~
-      <span >{{CustomDate(msg.sendingDate!)}}</span>
+      <span class="title">{{msg.title}}</span>
       <div #refContent class="content">
         {{msg.contents}}
           <button style="display: none;" #refbtnHide  (click)="HideMessage(refbtnHide,refContent,refbtnShow)" class="btn-primary"><i class="fa fa-eye"> הסתר הכל</i></button>

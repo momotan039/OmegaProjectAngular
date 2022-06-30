@@ -8,5 +8,7 @@ export class Message {
   title?:string
   isOpened=false
   sender?:User
+  reciver?:User
   sendingDate?:Date
+  groupId?:number
 }

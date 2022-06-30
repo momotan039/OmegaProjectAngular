@@ -1,0 +1,36 @@
+<div style="text-align: center;" class="container title mt-2">
+  <h1>Home Works</h1>
+</div>
+
+
+<div  class="container text-center">
+  <label for="">Title</label>
+  <input #refTitle type="text" class="form-control">
+  <label for="">Content</label>
+  <textarea #refContents cols="10" rows="10" class="form-control"></textarea>
+  <input #refFiles multiple type="file" name="" id="" class="form-control">
+
+  <select #refSelect class="mt-2 form-select" >
+    <option value="0"  selected>Choose Group to Send</option>
+    <option *ngFor="let group of groups" [value]="group.id">{{group.name}} </option>
+  </select>
+
+  <button (click)="AddHomeWork(refSelect.value,refFiles.files,refTitle.value,refContents.value)" class="btn btn-primary mt-2 mb-2">Add new Home Work</button>
+</div>
+
+
+
+<div class="container  mt-2">
+  <div class="homeWorks d-flex gap-2 pt-2 pb-2 flex-wrap text-dark">
+    <div  class="card p-3">
+      <h1> First Home Work</h1>
+      <button class="btn btn-primary">Show Details</button>
+    </div>
+    <div  class="card p-3">
+      <h1> First Home Work</h1>
+      <button class="btn btn-primary">Show Details</button>
+    </div>
+
+  </div>
+
+</div>

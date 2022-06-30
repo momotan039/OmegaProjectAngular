@@ -1,3 +1,5 @@
+import { HomeWork } from './../../Models/HomeWork';
+import { UserGroup } from './../../Models/UsersGroups';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
@@ -10,7 +12,7 @@ import { User } from '../../Models/User';
   providedIn: 'root'
 })
 export class HttpService {
-
+ httpErorrResponse:any
   constructor(private http:HttpClient) {
 
   }
@@ -30,7 +32,9 @@ export class HttpService {
   async GetFreindsByUser(Id:number){
     return await this.http.get("https://localhost:44327/api/Users/GetFreindsByUser/"+Id).toPromise();
   }
-
+  async GetUsersNotInThisGroup(GroupId:number){
+    return await this.http.get("https://localhost:44327/api/Users/GetUsersNotInThisGroup/"+GroupId).toPromise();
+  }
   async PostUser(user:User){
     //return await this.http.post("https://localhost:44327/api/Users/PostUser",user).toPromise();
      await this.http.post("https://localhost:44327/api/Users/PostUser",user).subscribe((data)=>{
@@ -90,6 +94,10 @@ async  GetGroups(){
 async  GetGroupsByUserId(id:number){
   return await this.http.get("https://localhost:44327/api/Groups/GetGroupsByUserId/"+id).toPromise();
 }
+
+async  GetUsersGroups(groupId:number){
+  return await this.http.get("https://localhost:44327/api/UsersGroups/GetUserGroups/"+groupId).toPromise();
+}
 async PostGroups(group:Group){
    await this.http.post("https://localhost:44327/api/Groups/PostGroup",group).subscribe((data)=>{
   },error=>{
@@ -99,9 +107,8 @@ async PostGroups(group:Group){
 }
 async DeleteGroups(id:number){
   return await this.http.delete("https://localhost:44327/api/Groups/DeleteGroup/"+id).subscribe((res)=>{
-
-  },error=>{
-    console.log(error)
+  },httpError=>{
+    console.log(httpError.error.text)
   });
 }
 
@@ -109,6 +116,20 @@ async EditingGroups(group:Group){
   return await this.http.put("https://localhost:44327/api/Groups/EditGroup",group).subscribe((res)=>{
   },error=>{
     console.warn((error as HttpErrorResponse).error )
+  });
+}
+
+async DeleteUserFromGroup(id:number){
+  return await this.http.delete("https://localhost:44327/api/UsersGroups/DeleteUserFromGroup/"+id).subscribe((res)=>{
+  },error=>{
+    console.log(error)
+  });
+}
+
+async AddUserToGroup(ug:UserGroup){
+  return await this.http.post("https://localhost:44327/api/UsersGroups/AddUserToGroup",ug).subscribe((res)=>{
+  },error=>{
+    console.log(error)
   });
 }
 
@@ -139,6 +160,14 @@ async  GetMessagesByReciver(idUser:number){
 
 async ChangeStatusMessage(msg:Message){
   await this.http.put("https://localhost:44327/api/Messages/ChangeStatusMessage",msg).subscribe((data)=>{
+ },error=>{
+   console.warn(error)
+ }
+ );
+}
+
+async SendHomeWork(homeWork:HomeWork){
+  await this.http.post("https://localhost:44327/api/HomeWork/SendHomeWork",homeWork,{withCredentials:true}).subscribe((data)=>{
  },error=>{
    console.warn(error)
  }

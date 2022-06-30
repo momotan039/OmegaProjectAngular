@@ -16,6 +16,7 @@
     <option value="0"  selected>בחירה שם הקורס</option>
     <option *ngFor="let course of courses" [value]="course.id">{{course.name}} </option>
   </select>
+
   </div>
   <button (click)="saveGroupe()" class="btn-primary mt-2" type="submit">שמירת הקבוצה</button>
 </form>

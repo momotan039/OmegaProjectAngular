@@ -1,3 +1,5 @@
+import { HomeWorkComponent } from './Components/Pages/home-work/home-work.component';
+import { GradeComponent } from './Components/Pages/grade/grade.component';
 import { GroupDetailsComponent } from './Components/Pages/Details/group-details/group-details.component';
 import { MyGroupsComponent } from './Components/Sub Components/my-groups/my-groups.component';
 import { CourseComponent } from './Components/Sub Components/course/course.component';
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path:"Student",component:StudentComponent},
   {path:"Admin",component:AdminComponent},
   {path:"Message",component:MessageComponent},
+  {path:"HomeWork",component:HomeWorkComponent},
+  {path:"Grade",component:GradeComponent},
   {path:"Course",component:CourseComponent},
   {path:"UserDetails/:id",component:UserDetailsComponent},
   {path:"GroupDetails/:id",component:GroupDetailsComponent},

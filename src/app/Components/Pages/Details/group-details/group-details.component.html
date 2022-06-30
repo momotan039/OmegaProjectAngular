@@ -2,29 +2,38 @@
   <h1>{{currentGroup?.name}}</h1>
 </div>
 <div class="title container text-center">
-  <h3>opening date:{{CustomDate(currentGroup.closingDate)}}</h3>
-  <h3>Closing date:{{CustomDate(currentGroup.openingDate)}}</h3>
-  <h3>count Studnets{{2}}</h3>
-  <h3>count Teacher{{1}}</h3>
+  <h3>opening date:{{CustomDate(currentGroup.openingDate)}}</h3>
+  <h3>Closing date:{{CustomDate(currentGroup.closingDate)}}</h3>
+  <h3>count Studnets:{{CountStudent()}}</h3>
+  <h3>count Teacher:{{CountTeacher()}}</h3>
 </div>
 <div class="title container text-center">
   <h1>Users</h1>
 </div>
 <div class="container p-3">
   <div class="d-flex flex-wrap gap-3 text-black">
-    <div  *ngFor="let user of users" class="card col-lg-3 ">
+    <div  *ngFor="let userGroup of usersGroups" class="card col-lg-3 ">
       <div class="card-header">
-        <h1 *ngIf="user.role==3;else teacher">Student</h1>
+        <button (click)="DeleteUserFromGroup(userGroup.id)" class="btn btn-close btn-danger float-lg-start"></button>
+        <h1 *ngIf="userGroup.user.role==3;else teacher">Student</h1>
         <ng-template #teacher>
         <h1 >Teacher</h1>
         </ng-template>
-        {{user.idCard}}
+        {{userGroup.user.idCard}}
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{user.firstName+" "+user.lastName}}</h5>
-        <a [routerLink]="'/UserDetails/'+user.id" class="btn btn-primary">show details</a>
+        <h5 class="card-title">{{userGroup.user.firstName+" "+userGroup.user.lastName}}</h5>
+        <a [routerLink]="'/UserDetails/'+userGroup.user.id" class="btn btn-primary">show details</a>
       </div>
     </div>
+     <div>
+      <h3>select new member to add</h3>
+      <select #refSelect (change)="ChangeOptionSelect($event.target)"  class="mt-2 form-select" >
+       <option value="0"  selected>בחירה חבר להוספה</option>
+       <option *ngFor="let member of members" [value]="member.id">{{member.firstName}}~{{member.idCard}}</option>
+     </select>
+     <button (click)="AddMemberToGroup(refSelect)" class="btn btn-primary">הוספה</button>
+     </div>
   </div>
 </div>
 
