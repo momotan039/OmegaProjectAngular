@@ -1,3 +1,6 @@
+import { UserService } from 'src/app/Services/User/Users.service';
+import { Group } from 'src/app/Models/Group';
+import { HttpService } from 'src/app/Services/httpService/http.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyGroupsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private httpService:HttpService,private userService:UserService) { }
+  groups:Group[]=[]
   ngOnInit(): void {
+    this.httpService.GetGroupsByUserId(this.userService.currentUser?.id!).then(data=>{
+      this.groups=data as Group[]
+    })
   }
+
 
 }

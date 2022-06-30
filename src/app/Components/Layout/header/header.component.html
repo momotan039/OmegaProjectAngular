@@ -8,17 +8,17 @@
         <i class="{{item.fontAwesomeClass}}">
         </i>{{item.Title}}</a>
     </li>
-    <li *ngIf="this.currentUser!.role!=1">
+    <li *ngIf="this.currentUser && this.currentUser!.role!=1">
       <a routerLink="MyGroup">
         <i class="fas fa-users">
         </i>קבוצות</a>
     </li>
-    <li *ngIf="this.currentUser!.role!=2">
+    <li *ngIf="this.currentUser &&  this.currentUser!.role!=2">
       <a routerLink="Grade">
         <i class="fas fa-graduation-cap">
         </i>ציונים</a>
     </li>
-    <li *ngIf="this.currentUser!.role!=1">
+    <li *ngIf="this.currentUser &&  this.currentUser!.role!=1">
       <a routerLink="HomeWork">
         <i class="fas fa-tasks">
         </i>עבודות</a>

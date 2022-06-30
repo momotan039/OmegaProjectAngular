@@ -1,7 +1,7 @@
 import { MessageGroup } from './../../../Models/MessageGroup';
 import { HttpService } from './../../../Services/httpService/http.service';
 import { UserService } from 'src/app/Services/User/Users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/User';
 import { Message } from 'src/app/Models/Message';
 import { interval } from 'rxjs';
@@ -13,24 +13,29 @@ import { MyTools } from 'src/app/Services/MyTools/MyTools';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent implements OnInit,OnDestroy {
   msg=new Message();
   sentMsgs:Message[]=[]
   recivedMsgs:Message[]=[]
   currentUser:any
   constructor(private HttpService:HttpService,private userService:UserService) { }
+
   friends:Array<User>=[]
   groups:Array<Group>=[]
+
+  //decalre message interval
+  getMessageInterval:any
    ngOnInit() {
     //get current User
     this.currentUser=this.userService.currentUser
 //get reveved messages after every 1 minute
-    interval(1000*60)
+    this.getMessageInterval=interval(1000*60)
     .subscribe(d=>{
       this.HttpService.GetMessagesByReciver(this.currentUser.id).then(data=>{
         this.recivedMsgs=(data as Message[])
       })
     })
+
     //set sender Id
      this.msg.senderId=this.currentUser.id
 
@@ -51,6 +56,11 @@ export class MessageComponent implements OnInit {
       this.groups=(data as Group[])
     })
   }
+  ngOnDestroy(): void {
+    //prevent get messages when leave message page
+    this.getMessageInterval.unsubscribe()
+  }
+
   SelectReciver(elemnt:any){
     this.msg.reciverId=Number(elemnt.value)
   }
