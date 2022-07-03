@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { HomeWork } from './../../Models/HomeWork';
 import { UserGroup } from './../../Models/UsersGroups';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -58,8 +59,10 @@ async EditingUser(user:User){
   });
 }
 
-async  GetCourses(id:number):Promise<Course|undefined|Array<Course>>{
+async  GetCourses(id=-1):Promise<Course|any>{
+  if(id!=-1)
   return await this.http.get("https://localhost:44327/api/Courses/GetCourses/"+id).toPromise();
+  return await this.http.get("https://localhost:44327/api/Courses/GetCourses/").toPromise();
 }
 async  GetCoursesByUserId(id:number){
   return await this.http.get("https://localhost:44327/api/Courses/GetCoursesByUserId/"+id).toPromise();
@@ -166,11 +169,18 @@ async ChangeStatusMessage(msg:Message){
  );
 }
 
-async SendHomeWork(homeWork:HomeWork){
+async SendHomeWork(homeWork:FormData){
   await this.http.post("https://localhost:44327/api/HomeWork/SendHomeWork",homeWork,{withCredentials:true}).subscribe((data)=>{
  },error=>{
    console.warn(error)
  }
  );
+
 }
+async GetHomeWorks(id=-1){
+  if(id==-1)
+  return await this.http.get("https://localhost:44327/api/HomeWork/GetHomeWork").toPromise();
+  return await this.http.get("https://localhost:44327/api/HomeWork/GetHomeWork/"+id).toPromise();
+}
+
 }

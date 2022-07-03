@@ -1,8 +1,8 @@
 export class HomeWork {
-  id?:number
-  title?:string
-  contents?:string
-  groupID?:number
-  filesPath?:FormData
+  id=0
+  title=""
+  contents=""
+  groupID=0
+  filesPath=""
   sendingDate?:Date
 }

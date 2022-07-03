@@ -16,8 +16,8 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.course.id=0;
-    this.course.name=""
+    // this.course.id=0;
+    // this.course.name=""
 
     this.httpService.GetCourses(-1).then(data=>{
       this.courses=data as Course[]

@@ -1,3 +1,5 @@
+import { HomeWorkDetailsComponent } from './Components/Pages/Details/home-work-details/home-work-details.component';
+import { CourseDetailsComponent } from './Components/Pages/Details/course-details/course-details.component';
 import { HomeWorkComponent } from './Components/Pages/home-work/home-work.component';
 import { GradeComponent } from './Components/Pages/grade/grade.component';
 import { GroupDetailsComponent } from './Components/Pages/Details/group-details/group-details.component';
@@ -30,6 +32,8 @@ const routes: Routes = [
   {path:"Course",component:CourseComponent},
   {path:"UserDetails/:id",component:UserDetailsComponent},
   {path:"GroupDetails/:id",component:GroupDetailsComponent},
+  {path:"CourseDetails/:id",component:CourseDetailsComponent},
+  {path:"HomeWorkDetails/:id",component:HomeWorkDetailsComponent},
 ];
 
 @NgModule({

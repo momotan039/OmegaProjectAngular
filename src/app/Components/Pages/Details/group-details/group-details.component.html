@@ -30,7 +30,7 @@
       <h3>select new member to add</h3>
       <select #refSelect (change)="ChangeOptionSelect($event.target)"  class="mt-2 form-select" >
        <option value="0"  selected>בחירה חבר להוספה</option>
-       <option *ngFor="let member of members" [value]="member.id">{{member.firstName}}~{{member.idCard}}</option>
+       <option *ngFor="let member of members" [value]="member.id">{{member.role}}~{{member.firstName}}~{{member.idCard}}</option>
      </select>
      <button (click)="AddMemberToGroup(refSelect)" class="btn btn-primary">הוספה</button>
      </div>

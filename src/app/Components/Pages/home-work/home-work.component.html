@@ -22,15 +22,10 @@
 
 <div class="container  mt-2">
   <div class="homeWorks d-flex gap-2 pt-2 pb-2 flex-wrap text-dark">
-    <div  class="card p-3">
-      <h1> First Home Work</h1>
-      <button class="btn btn-primary">Show Details</button>
+    <div *ngFor="let hw of homeWorks" class="card p-3">
+      <h1>{{hw.title}}</h1>
+      <button [routerLink]="'/HomeWorkDetails/'+hw.id" class="btn btn-primary">Show Details</button>
     </div>
-    <div  class="card p-3">
-      <h1> First Home Work</h1>
-      <button class="btn btn-primary">Show Details</button>
-    </div>
-
   </div>
 
 </div>

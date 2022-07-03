@@ -26,6 +26,8 @@ import { GroupDetailsComponent } from './Components/Pages/Details/group-details/
 import { UserDetailsComponent } from './Components/Pages/Details/user-details/user-details.component';
 import { GradeComponent } from './Components/Pages/grade/grade.component';
 import { HomeWorkComponent } from './Components/Pages/home-work/home-work.component';
+import { CourseDetailsComponent } from './Components/Pages/Details/course-details/course-details.component';
+import { HomeWorkDetailsComponent } from './Components/Pages/Details/home-work-details/home-work-details.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { HomeWorkComponent } from './Components/Pages/home-work/home-work.compon
     UserDetailsComponent,
     GradeComponent,
     HomeWorkComponent,
+    CourseDetailsComponent,
+    HomeWorkDetailsComponent,
   ],
   imports: [
     BrowserModule,

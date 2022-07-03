@@ -12,12 +12,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomeWorkComponent implements OnInit {
 groups:Array<Group>=[]
 homeWork=new HomeWork()
+homeWorks:HomeWork[]=[]
   constructor(private userService:UserService,private httpService:HttpService) { }
 
   ngOnInit(): void {
-    let userId=1103
+    let userId=this.userService.currentUser?.id!
        this.httpService.GetGroupsByUserId(userId).then(d=>{
          this.groups=d as Group[]
+       })
+
+       this.httpService.GetHomeWorks().then(data=>{
+         this.homeWorks=data as HomeWork[]
        })
   }
 
@@ -42,23 +47,18 @@ homeWork=new HomeWork()
   }
 
   AddHomeWork(idGroup:any,Files:any,Title:any,Contents:any){
-
-    let file=<File>Files[0];
-    this.homeWork.filesPath=new FormData()
+   if(!this.IsValidateInputs(idGroup,Title,Contents))
+    return
+     let files=Files[0] as File
+    // this.homeWork.filesPath=new FormData()
     //this.homeWork.filesPath?.append("file",file,file.name)
-
-    this.httpService.SendHomeWork(this.homeWork).then(d=>{
-      alert("sended")
+    let fd=new FormData();
+   fd.append("title",Title)
+   fd.append("contents",Contents)
+   fd.append("groupId",idGroup)
+   fd.append("files",files)
+    this.httpService.SendHomeWork(fd).then(d=>{
+      console.log("Success Message")
     })
-
-    // if(!this.IsValidateInputs(idGroup,Title,Contents))
-    // return
-
-    // this.homeWork.groupID=idGroup
-    // this.homeWork.title=Title
-    // this.homeWork.contents=Contents
-    // this.homeWork.filesPath=Files
-    // this.homeWork.sendingDate=new Date()
-    // this.httpService.SendHomeWork(this.homeWork)
   }
 }
