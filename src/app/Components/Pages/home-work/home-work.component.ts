@@ -13,11 +13,12 @@ export class HomeWorkComponent implements OnInit {
 groups:Array<Group>=[]
 homeWork=new HomeWork()
 homeWorks:HomeWork[]=[]
+userID=-1
   constructor(private userService:UserService,private httpService:HttpService) { }
 
   ngOnInit(): void {
-    let userId=this.userService.currentUser?.id!
-       this.httpService.GetGroupsByUserId(userId).then(d=>{
+      this.userID=this.userService.currentUser?.id!
+       this.httpService.GetGroupsByUserId(this.userID).then(d=>{
          this.groups=d as Group[]
        })
 
@@ -57,8 +58,12 @@ homeWorks:HomeWork[]=[]
    fd.append("contents",Contents)
    fd.append("groupId",idGroup)
    fd.append("files",files)
+   fd.append("teacherId",this.userID+"")
     this.httpService.SendHomeWork(fd).then(d=>{
-      console.log("Success Message")
+      alert("Success Message")
+      this.httpService.GetHomeWorks().then(data=>{
+        this.homeWorks=data as HomeWork[]
+      })
     })
   }
 }

@@ -3,6 +3,7 @@ export class HomeWork {
   title=""
   contents=""
   groupID=0
+  teacherID=0
   filesPath=""
   sendingDate?:Date
 }

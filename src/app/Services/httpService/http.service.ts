@@ -170,7 +170,7 @@ async ChangeStatusMessage(msg:Message){
 }
 
 async SendHomeWork(homeWork:FormData){
-  await this.http.post("https://localhost:44327/api/HomeWork/SendHomeWork",homeWork,{withCredentials:true}).subscribe((data)=>{
+  await this.http.post("https://localhost:44327/api/HomeWork/SendHomeWork",homeWork,{withCredentials:false}).subscribe((data)=>{
  },error=>{
    console.warn(error)
  }
