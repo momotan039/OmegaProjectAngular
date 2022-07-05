@@ -50,14 +50,17 @@ userID=-1
   AddHomeWork(idGroup:any,Files:any,Title:any,Contents:any){
    if(!this.IsValidateInputs(idGroup,Title,Contents))
     return
-     let files=Files[0] as File
+     let files=Files as File[]
+     let fff=files[0]
     // this.homeWork.filesPath=new FormData()
     //this.homeWork.filesPath?.append("file",file,file.name)
     let fd=new FormData();
    fd.append("title",Title)
    fd.append("contents",Contents)
    fd.append("groupId",idGroup)
-   fd.append("files",files)
+   debugger
+   for(let i=0;i<files.length;i++)
+    fd.append("files",files[i])
    fd.append("teacherId",this.userID+"")
     this.httpService.SendHomeWork(fd).then(d=>{
       alert("Success Message")

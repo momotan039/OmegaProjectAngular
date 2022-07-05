@@ -1,12 +1,6 @@
 <div class="container title mt-2 text-center">
   <h3>Title:{{this.HomeWork.title}}</h3>
   <h3>Sending Date:{{this.HomeWork.sendingDate}}</h3>
-  <a target="_blank" *ngIf="this.HomeWork.filesPath!=''" [href]="this.HomeWork.filesPath">
-    <h3 >
-      {{getFileName(this.HomeWork.filesPath)}}
-    </h3>
-  </a>
-  <button class="btn btn-primary" (click)="downloadImage()">Download Image</button>
 </div>
 
 <div class="container">
@@ -14,6 +8,25 @@
   <h3 class="mt-2 text-center">
     Attached Files
   </h3>
+
+  <table class="table table-striped">
+    <thead class="text-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">file</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let i=index;let item of convertPathsToArray(this.HomeWork.filesPath)">
+        <th class="text-light" scope="row">{{i+1}}</th>
+        <td><a [href]="sanitize(item)">{{getFileName(item)}}</a></td>
+        <td>  <button class="btn btn-primary" (click)="downloadImage()">Download Image</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from 'src/app/Services/httpService/http.service';
 import { Observable, Observer } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-work-details',
@@ -14,7 +15,8 @@ export class HomeWorkDetailsComponent implements OnInit {
   base64Image: string | undefined;
   constructor(
     private route: ActivatedRoute,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private sanitizer:DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -25,9 +27,17 @@ export class HomeWorkDetailsComponent implements OnInit {
   }
 
   getFileName(path:string){
-    console.warn(path)
     return  path.replace(/^.*[\\\/]/, '');
   }
+  convertPathsToArray(path:string){
+    const last=path.charAt(path.length - 1);
+    if(last=='\n')
+    path=path.slice(0,-1)
+  return path.split('\n')
+  }
+  sanitize(url:string){
+    return  this.sanitizer.bypassSecurityTrustUrl(url);
+}
 
   downloadImage() {
     let imageUrl =this.HomeWork.filesPath
